@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'namePage' => 'Dashboard',
+    'namePage' => 'Sistema de Alarme Monitorado',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'home',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
@@ -7,35 +7,54 @@
 
 @section('content')
   <div class="panel-header panel-header-lg">
-    <canvas id="bigDashboardChart"></canvas>
+    <img src="{{ asset('assets/img/banner-header.jpg') }}" alt="">
   </div>
   <div class="content">
     <div class="row">
       <div class="col-lg-4">
         <div class="card card-chart">
           <div class="card-header">
-            <h5 class="card-category">Global Sales</h5>
-            <h4 class="card-title">Shipped Products</h4>
+            <h5 class="card-category">Alcance Global</h5>
+            <h4 class="card-title">Venda do dispositivo</h4>
             <div class="dropdown">
               <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                 <i class="now-ui-icons loader_gear"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Ações</a>
                 <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                <a class="dropdown-item text-danger" href="#">Remover Dados</a>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="chart-area">
-              <canvas id="lineChartExample"></canvas>
+              <!-- <canvas id="lineChartExample"></canvas> -->
+
+              <!-- Chart's container -->
+            <div id="chart" style="height: 300px;"></div>
+            <!-- Charting library -->
+            <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+            <!-- Chartisan -->
+            <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+            <!-- Your application script -->
+            <script>
+              const chart = new Chartisan({
+                el: '#chart',
+                url: "@chart('sample_chart')",
+                hooks: new ChartisanHooks()
+                .legend()
+                .colors('blue')
+                .tooltip()
+                .axis(false)
+              });
+            </script>
+
             </div>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Atualizado
             </div>
           </div>
         </div>
@@ -43,41 +62,42 @@
       <div class="col-lg-4 col-md-6">
         <div class="card card-chart">
           <div class="card-header">
-            <h5 class="card-category">2018 Sales</h5>
-            <h4 class="card-title">All products</h4>
+            <h5 class="card-category">Adesão em 2022</h5>
+            <h4 class="card-title">Todos os produtos</h4>
             <div class="dropdown">
               <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                 <i class="now-ui-icons loader_gear"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Ações</a>
                 <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                <a class="dropdown-item text-danger" href="#">Remover Dados</a>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="chart-area">
+              <canvas id="bigDashboardChart"></canvas> 
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Atualizado
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category"> Estátisticas de requisições</h5>
+            <h4 class="card-title">Últimas 24 horas</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+
               <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">Email Statistics</h5>
-            <h4 class="card-title">24 Hours Performance</h4>
-          </div>
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="barChartSimpleGradientsNumbers"></canvas>
+              <!-- <canvas id="barChartSimpleGradientsNumbers"></canvas> -->
             </div>
           </div>
           <div class="card-footer">
@@ -89,7 +109,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="card  card-tasks">
           <div class="card-header ">
             <h5 class="card-category">Backend development</h5>
@@ -165,106 +185,6 @@
             <hr>
             <div class="stats">
               <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-category">All Persons List</h5>
-            <h4 class="card-title"> Employees Stats</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Country
-                  </th>
-                  <th>
-                    City
-                  </th>
-                  <th class="text-right">
-                    Salary
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Dakota Rice
-                    </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-right">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-right">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-right">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-right">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-right">
-                      $78,615
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>

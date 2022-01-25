@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/eye-logo.png">
+  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/eye-logo.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!-- Extra details for Live View on GitHub Pages -->
   <title>
-    Now UI Dashboard by Creative Tim
+    SAM - Sistema de Alarme Monitorado
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -19,6 +19,7 @@
   <link href="{{ asset('assets') }}/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('assets') }}/demo/demo.css" rel="stylesheet" />
+    
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -36,7 +37,7 @@
   <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
   <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsA2paRF8lXaWReCBCxQte_eX7Oq-Z0h8"><script>
   <!-- Chart JS -->
   <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
