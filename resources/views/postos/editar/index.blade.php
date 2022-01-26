@@ -9,7 +9,6 @@
 <meta name="uri" content="/{{$uri}}">
 @endpush
 
-
 @section('content')
   <div class="panel-header panel-header-sm">
   </div>
@@ -26,7 +25,7 @@
           <div class="card-body">
             <div class="toolbar">
               <!--        Here you can write extra buttons/actions for the toolbar              -->
-              <form method="POST" action="{{ route('posto.store') }}" enctype="multipart/form-data">
+              <form method="PUT" action="{{ route('posto.update') }}" enctype="multipart/form-data">
                 @csrf
                 @include('forms._formPosto.index')
             
@@ -47,7 +46,7 @@
       <div class="col-md-6">
         <div class="card ">
           <div class="card-body ">
-            <div id="map_canvas" class="map"></div>
+            <div id="map" class="map"></div>
           </div>
         </div>
       </div>
@@ -59,5 +58,5 @@
   @endsection
 
   @push('js')
-  <script src="{{asset('assets/js/map.js')}}"></script>
+    <script src="{{asset('assets/js/map.js')}}"></script>
 @endpush

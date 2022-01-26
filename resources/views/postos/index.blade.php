@@ -5,6 +5,10 @@
     'activeNav' => '',
 ])
 
+@push('meta')
+<meta name="uri" content="/{{$uri}}">
+@endpush
+
 @section('content')
   <div class="panel-header panel-header-sm">
   </div>
@@ -25,41 +29,14 @@
             <table id="datatable" class="table table-striped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Date de Criação</th>
-                  <th class="disabled-sorting text-right">Acções</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Date de Criação</th>
+                  <th scope="col" class="disabled-sorting text-right">Acções</th>
                 </tr>
               </thead>
-              <tfoot>
-              <tbody>
-                                  <tr>
-                    <td>Admin</td>
-                    <td>admin@nowui.com</td>
-                    <td>25/02/2020 10:14</td>
-                      <td class="text-right">
-                        <!-- <a type="button" href="#" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                          <i class="now-ui-icons ui-2_settings-90"></i>
-                        </a> -->
-                        <div class="dropdown">
-                        
-                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <!-- <i class="fa fa-clone" aria-hidden="true"></i> -->
-                                <i class="now-ui-icons ui-2_settings-90" aria-hidden="true"></i>
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="">Editar</a>
-
-                              <a class="dropdown-item" href=" "
-                                  onclick="return confirm('Quer mesmo eliminar este Posto?')">Eliminar</a>
-                            </button>
-
-                        </div>
-                      </td>
-                  </tr>
-                              </tbody>
+              
             </table>
           </div>
           <!-- end content-->

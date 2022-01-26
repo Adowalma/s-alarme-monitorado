@@ -12,7 +12,7 @@ class PageController extends Controller
      */
     public function index(string $page)
     {
-        if (view()->exists("pages.{$page}")) {
+        if ((view()->exists("pages.{$page}")) && ($page!=='maps')) {
             return view("pages.{$page}");
         }
         return abort(404);

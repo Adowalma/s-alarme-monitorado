@@ -49,7 +49,7 @@
           </ul>
         </div>
       <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
+        <a href="{{ route('ver-mapa.ver') }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Mapas') }}</p>
         </a>

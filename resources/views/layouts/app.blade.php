@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  @stack('meta')
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/eye-logo.png">
   <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/eye-logo.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -19,6 +20,11 @@
   <link href="{{ asset('assets') }}/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('assets') }}/demo/demo.css" rel="stylesheet" />
+
+
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsA2paRF8lXaWReCBCxQte_eX7Oq-Z0h8"></script> -->
+
     
 </head>
 
@@ -45,7 +51,7 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets') }}/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset('assets') }}/demo/demo.js"></script>
+ 
   @stack('js')
 </body>
 
