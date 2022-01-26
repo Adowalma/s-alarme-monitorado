@@ -13,8 +13,11 @@
     </a>
   </div>
   <div class="sidebar-wrapper" id="sidebar-wrapper">
-    <ul class="nav">
+   
+   <ul class="nav">
+   @can('isAdmin') 
       <li>
+        
         <a data-toggle="collapse" href="#laravelExamples">
             <!-- <i class="fab fa-laravel"></i> -->
              <i class="now-ui-icons users_single-02"></i> 
@@ -54,6 +57,7 @@
           <p>{{ __('Mapas') }}</p>
         </a>
       </li>
+      @endcan
       <li class = " @if ($activePage == 'notifications') active @endif">
         <a href="{{ route('page.index','notifications') }}">
           <i class="now-ui-icons ui-1_bell-53"></i>
@@ -67,5 +71,6 @@
         </a>
       </li>
     </ul>
+    
   </div>
 </div>
