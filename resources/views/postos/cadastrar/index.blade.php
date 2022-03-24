@@ -59,5 +59,6 @@
   @endsection
 
   @push('js')
+  
   <script src="{{asset('assets/js/map.js')}}"></script>
 @endpush

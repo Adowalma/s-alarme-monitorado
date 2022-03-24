@@ -29,14 +29,21 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin', function($user){
             return $user->role == 'admin';
         });
-        // posto user role
-        Gate::define('isPosto', function($user){
-            return $user->role == 'posto';
-        });
         // user role
         Gate::define('isUser', function($user){
             return $user->role == 'user';
         });
-
+        // funcionario role
+        Gate::define('isFuncionario', function($user){
+            return $user->role == 'funcionario';
+        });
+        // forAll user role (everybody can acess)
+        Gate::define('forAll', function($user){
+            return $user;
+        });
+        // posto user role
+        Gate::define('isPosto', function($user){
+            return $user->role == 'posto';
+        });
     }
 }

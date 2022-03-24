@@ -14,7 +14,91 @@
   </div>
   <div class="content">
     <div class="row">
-      <div class="col-md-6">
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="places-buttons">
+              <div class="row">
+                <div class="col-md-6 ml-auto mr-auto text-center">
+                  <h4 class="card-title">
+                   Gestão de Alarmes
+                    <p class="category">Clique para ver os alarmes</p>
+                  </h4>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-10 ml-auto mr-auto">
+
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Tipo de Alarme
+                      </th>
+                      <th>
+                        Proprietário
+                      </th>
+                      <th>
+                        Data - Hora
+                      </th>
+                      <th >
+                        Ações
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          
+                        </td>
+                        <td>
+                        Dakota Rice 
+                        </td>
+                        <td>
+                          16 Mar 08:57
+                        </td>
+                        <td class="text-left">
+                          <div class="row">
+                            <!-- <div class="col-md-4">
+                              <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','left')">Bottom Left</button>
+                            </div> -->
+                            <div class="">
+                              <!-- <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','center')">Ver detalhes</button> -->
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-theVideo="http://www.youtube.com/embed/loFtozxZG0s">
+                                Ver detalhes
+                              </button>
+
+                              @include('modals.alarms')
+
+                            </div>
+                            <!-- <div class="col-md-4">
+                              <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
+                            </div> -->
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                  <!-- <div class="row">
+                    <div class="col-md-4">
+                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','left')">Bottom Left</button>
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','center')">Bottom Center</button>
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-6">
         <div class="card">
           <div class="card-header">
             <h4 class="card-title">Notifications Style</h4>
@@ -89,53 +173,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="places-buttons">
-              <div class="row">
-                <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h4 class="card-title">
-                    Notifications Places
-                    <p class="category">Click to view notifications</p>
-                  </h4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-8 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('top','left')">Top Left</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('top','center')">Top Center</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('top','right')">Top Right</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-8 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','left')">Bottom Left</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','center')">Bottom Center</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div> -->
+      
     </div>
   </div>
 @endsection

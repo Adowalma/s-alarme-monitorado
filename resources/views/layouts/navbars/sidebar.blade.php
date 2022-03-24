@@ -61,7 +61,7 @@
       <li class = " @if ($activePage == 'notifications') active @endif">
         <a href="{{ route('page.index','notifications') }}">
           <i class="now-ui-icons ui-1_bell-53"></i>
-          <p>{{ __('Notificações') }}</p>
+          <p>{{ __('Notificações') }} <span class="badge badge-pill badge-danger">4</span></p>
         </a>
       </li>
       <li class = " @if ($activePage == 'table') active @endif">

@@ -30,7 +30,7 @@
                 @include('forms._formPosto.index')
             
                 <div class="card-footer ">
-                  <button type="submit" class="btn btn-primary btn-round btn-lg">{{__('Cadastrar')}}</button>
+                  <button type="submit" class="btn btn-primary btn-round btn-lg">{{__('Atualizar')}}</button>
                 </div>
               </form>
             </div>
@@ -58,5 +58,6 @@
   @endsection
 
   @push('js')
+  
     <script src="{{asset('assets/js/map.js')}}"></script>
 @endpush

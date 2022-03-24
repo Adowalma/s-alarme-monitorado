@@ -24,15 +24,22 @@
               <div class="row">
               </div>
                 <div class="row">
-                    <div class="col-md-5 pr-3">
+                    <div class="col-md-6 pr-3">
                         <div class="form-group">
                             <label>{{__(" Name")}}</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                         </div>
                     </div>
+                    <div class="col-md-6 pr-3">
+                        <div class="form-group">
+                            <label>{{__(" Username")}}</label>
+                                <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username', auth()->user()->username) }}">
+                                @include('alerts.feedback', ['field' => 'username'])
+                        </div>
+                    </div>
                 
-                  <div class="col-md-7 pr-3">
+                  <div class="col-md-6 pr-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__(" Email address")}}</label>
                       <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', auth()->user()->email) }}">
@@ -96,17 +103,17 @@
             <div class="author">
               <a href="#">
                 <img class="avatar border-gray" src="{{asset('assets')}}/img/default-avatar.png" alt="...">
-                <h5 class="title">{{ auth()->user()->name }}</h5>
+                <h5 class="title">{{ auth()->user()->username }}</h5>
               </a>
               <p class="description">
                   {{ auth()->user()->email }}
               </p>
               <p class="description text-uppercase">
-                 <b>{{ auth()->user()->role }}</b>
+                 Nível de acesso: <b>{{ auth()->user()->role }}</b>
               </p>
             </div>
           </div>
-          <hr>
+          <!-- <hr>
           <div class="button-container">
             <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
               <i class="fab fa-facebook-square"></i>
@@ -117,7 +124,7 @@
             <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
               <i class="fab fa-google-plus-square"></i>
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

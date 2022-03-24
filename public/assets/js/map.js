@@ -26,7 +26,7 @@ function loadMap(){
 
             // creates a draggable marker to the given coords
             var vMarker = new google.maps.Marker({ 
-                position: new google.maps.LatLng(parseFloat(value.lat), parseFloat(value.lng)),
+                position: new google.maps.LatLng(value.lat, value.lng),
                 title: value.name
             });
 

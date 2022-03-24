@@ -1,14 +1,28 @@
-<!--Begin input name -->
+<!--Begin input full name -->
 <div class="input-group {{ $errors->has('name') ? ' has-danger' : '' }}">
   <div class="input-group-prepend">
   <div class="input-group-text">
     <i class="now-ui-icons users_circle-08"></i>
   </div>
   </div>
-  <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nome') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+  <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nome Completo') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
   @if ($errors->has('name'))
     <span class="invalid-feedback" style="display: block;" role="alert">
       <strong>{{ $errors->first('name') }}</strong>
+    </span>
+  @endif
+</div>
+<!--Begin input username -->
+<div class="input-group {{ $errors->has('username') ? ' has-danger' : '' }}">
+  <div class="input-group-prepend">
+  <div class="input-group-text">
+    <i class="now-ui-icons users_circle-08"></i>
+  </div>
+  </div>
+  <input class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" type="text" name="username" value="{{ old('username') }}" required autofocus>
+  @if ($errors->has('username'))
+    <span class="invalid-feedback" style="display: block;" role="alert">
+      <strong>{{ $errors->first('username') }}</strong>
     </span>
   @endif
 </div>
@@ -63,20 +77,20 @@
 </div>
 
 <!-- input latitude -->
-<div class="input-group">
+<!-- <div class="input-group">
   <div class="input-group-prepend">
     <div class="input-group-text">
       <i class="now-ui-icons location_pin"></i>
     </div>
   </div>
   <input class="form-control" placeholder="{{ __('Latitude') }}" type="number" name="" required>
-</div>
+</div> -->
 <!-- input longitude -->
-<div class="input-group">
+<!-- <div class="input-group">
   <div class="input-group-prepend">
     <div class="input-group-text">
       <i class="now-ui-icons location_pin"></i></i>
     </div>
   </div>
   <input class="form-control" placeholder="{{ __('Longitude') }}" type="number" name="" required>
-</div>
+</div> -->
