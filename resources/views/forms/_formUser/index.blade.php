@@ -1,5 +1,5 @@
 <!--Begin input full name -->
-<div class="input-group {{ $errors->has('name') ? ' has-danger' : '' }}">
+<div class="input-group {{ $errors->has('name') ? ' has-danger' : '' }}" style="backdrop-filter: blur(11px);">
   <div class="input-group-prepend">
   <div class="input-group-text">
     <i class="now-ui-icons users_circle-08"></i>

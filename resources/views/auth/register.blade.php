@@ -46,7 +46,7 @@
           
         </div>
         <div class="col-md-4 ">
-          <div class="card card-signup text-center">
+          <div class=" text-white text-center  no-border rounded shadow-lg" style="backdrop-filter: blur(10px);">
             <div class="card-header ">
               <h4 class="card-title">{{ __('Registar') }}</h4>
               <div class="social">
