@@ -25,10 +25,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 ml-auto mr-auto">
+        <!--  -->
+        <div class="col-md-4 ml-auto mr-auto no-border rounded shadow-lg" style="backdrop-filter: blur(10px);"> 
             <form role="form" method="POST" action="{{ route('login') }}">
                 @csrf
-            <div class="card card-login card-plain">
+            <div class="card card-login card-plain"> 
                 <div class="card-header ">
                 <div class="logo-container">
                     <img src="{{ asset('assets/img/eye-logo.png') }}" alt="">
@@ -48,8 +49,8 @@
                     <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
-                <div class="input-group no-border form-control-lg {{ $errors->has('password') ? ' has-danger' : '' }}">
-                    <div class="input-group-prepend">
+                <div class="input-group no-border form-control-lg {{ $errors->has('password') ? ' has-danger' : '' }}" >
+                    <div class="input-group-prepend" >
                     <div class="input-group-text">
                         <i class="now-ui-icons objects_key-25"></i></i>
                     </div>
