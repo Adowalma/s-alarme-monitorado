@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
-    'namePage' => 'Lista de Usuários',
+    'namePage' => 'Lista de Funcionarios',
     'activePage' => 'users',
     'activeNav' => '',
 ])
@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-              <a class="btn btn-primary btn-round text-white pull-right" href="#">Add user</a>
+              <!-- <a class="btn btn-primary btn-round text-white pull-right" href="#">Add user</a> -->
             <h4 class="card-title">{{__("Usuários")}}</h4>
             <div class="col-12 mt-2">
                                         </div>
@@ -25,31 +25,44 @@
             <table id="datatable" class="table table-striped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>Perfil</th>
+                  <th>Username</th>
                   <th>Nome</th>
                   <th>Email</th>
-                  <th>Date de Criação</th>
+                  <th>Nível de Acesso</th>
+                  <th>Estado</th>
+                  <!-- <th>Date de Criação</th> -->
                   <th class="disabled-sorting text-right">Acções</th>
                 </tr>
               </thead>
               <tfoot>
               <tbody>
-                                  <tr>
-                    <td>
+              @foreach($users as $user)
+                <tr>
+                    <!-- <td>
                       <span class="avatar avatar-sm rounded-circle">
                         <img src="{{asset('assets')}}/img/default-avatar.png" alt="" style="max-width: 80px; border-radiu: 100px">
                       </span>
-                    </td>
-                    <td>Admin</td>
-                    <td>admin@nowui.com</td>
-                    <td>25/02/2020 10:14</td>
+                    </td> -->
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->role}}</td>
+                    <td>{{$user->estado}}</td>
+                    <!-- <td>25/02/2020 10:14</td> -->
+                    @if($user->role=="admin")
+                      <td>
+
+                      </td>
+                    @else
                       <td class="text-right">
-                                             <a type="button" href="#" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                             <a type="button" href="#" rel="tooltip" class="btn btn-primary btn-icon btn-sm " data-original-title="" title="">
                         <i class="now-ui-icons ui-2_settings-90"></i>
                       </a>
-                                                              </td>
+                    </td>
+                    @endif
                   </tr>
-                              </tbody>
+                  @endforeach                 
+              </tbody>
             </table>
           </div>
           <!-- end content-->

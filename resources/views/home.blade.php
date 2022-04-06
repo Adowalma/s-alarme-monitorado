@@ -1,19 +1,19 @@
 @extends('layouts.app', [
-    'namePage' => 'Sistema de Alarme Monitorado',
+    'namePage' => '',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'home',
-    'backgroundImage' => asset('now') . "/img/bg14.jpg",
+    'backgroundImage' => asset('now') . "/img/bgw0.jpg",
 ])
 
 @section('content')
-  <div class="panel-header panel-header-lg">
-    <img src="{{ asset('assets/img/banner-header.jpg') }}" alt="">
+  <div class="panel-header " > 
+    <img src="{{ asset('') }}" alt="">
   </div>
-  <div class="content">
+  <div class="content " style="background-color: grey;">
     <div class="row">
       <div class="col-lg-4">
-        <div class="card card-chart">
-          <div class="card-header">
+        <div class="card card-chart no-border input-group">
+          <div class="card-header ">
             <h5 class="card-category">Alcance Global</h5>
             <h4 class="card-title">Venda do dispositivo</h4>
             <div class="dropdown">
@@ -32,29 +32,33 @@
               <!-- <canvas id="lineChartExample"></canvas> -->
 
               <!-- Chart's container -->
-            <div id="chart" style="height: 300px;"></div>
-            <!-- Charting library -->
-            <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-            <!-- Chartisan -->
-            <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-            <!-- Your application script -->
-            <script>
-              const chart = new Chartisan({
-                el: '#chart',
-                url: "@chart('sample_chart')",
-                hooks: new ChartisanHooks()
+    <div id="chart" style="height: 300px;"></div>
+    <!-- Charting library -->
+    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+    <!-- Chartisan -->
+    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+    <!-- Your application script -->
+    <script>
+        const chart = new Chartisan({
+            el: '#chart',
+            url: "@chart('my_chart')",
+            hooks: new ChartisanHooks()
+             .colors(['#4299E1','#FE0045','#C07EF1','#67C560','#ECC94B'])
+                .datasets('line')
+                // .axis(true)
+
                 .legend()
                 .colors('blue')
                 .tooltip()
-                .axis(false)
-              });
-            </script>
+                .axis(true)
+        });
+    </script>
 
             </div>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Atualizado
+              <i class="now-ui-icons loader_refresh spin"></i> Atualizado
             </div>
           </div>
         </div>
@@ -77,12 +81,12 @@
           </div>
           <div class="card-body">
             <div class="chart-area">
-              <canvas id="bigDashboardChart"></canvas> 
+              <!-- <canvas id="bigDashboardChart"></canvas>  -->
             </div>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Atualizado
+              <i class="now-ui-icons loader_refresh spin"></i> Atualizado
             </div>
           </div>
         </div>
@@ -194,11 +198,11 @@
 @endsection
 
 @push('js')
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
 
     });
-  </script>
+  </script> -->
 @endpush

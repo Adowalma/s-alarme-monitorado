@@ -2,11 +2,11 @@
     'namePage' => 'Login page',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'login',
-    'backgroundImage' => asset('assets') . "/img/bg-w5.jpg",
+    'backgroundImage' => asset('assets') . "/img/cameras1-bw.jpg",
 ])
 
 @section('content')
-    <div class="content">
+    <div class="content"> 
         <div class="container">
         <div class="col-md-12 ml-auto mr-auto">
             <div class="header bg-gradient-primary py-10 py-lg-2 pt-lg-12">
@@ -32,7 +32,7 @@
             <div class="card card-login card-plain"> 
                 <div class="card-header ">
                 <div class="logo-container">
-                    <img src="{{ asset('assets/img/eye-logo.png') }}" alt="">
+                    <img src="{{ asset('assets/img/Sam/3x/Ativo 2.svg') }}" alt="">
                 </div>
                 </div>
                 <div class="card-body ">
@@ -65,11 +65,11 @@
                 </div>
                 <div class="card-footer ">
                 <button  type = "submit" class="btn btn-primary btn-round btn-lg btn-block mb-3">{{ __('Entrar') }}</button>
-                <div class="pull-left">
+                <!-- <div class="pull-left">
                     <h6>
                     <a href="{{ route('register') }}" class="link footer-link">{{ __('Criar conta') }}</a>
                     </h6>
-                </div>
+                </div> -->
                 <div class="pull-right">
                     <h6>
                     <a href="{{ route('password.request') }}" class="link footer-link">{{ __('Esqueceu a palavra-passe?') }}</a>

@@ -2661,7 +2661,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     /* For Safari 5.1 to 6.0 */
     /* For Opera 11.1 to 12.0 */
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
+    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(53, 52, 52, 0.6));
     /* Standard syntax */
 }
 
@@ -3963,11 +3963,11 @@ Created using IcoMoon - icomoon.io
 .sidebar .logo a.logo-mini,
 .off-canvas-sidebar .logo a.logo-mini {
     opacity: 1;
-    float: left;
-    width: 34px;
+    float: center;
+    width: 54px;
     text-align: center;
-    margin-left: 10px;
-    margin-right: 12px;
+    margin-left: 87px;
+    margin-right: 0px;
 }
 
 .sidebar .logo a.logo-normal,
@@ -4028,6 +4028,7 @@ Created using IcoMoon - icomoon.io
 .off-canvas-sidebar .logo-tim img {
     width: 60px;
     height: 60px;
+    margin-left: 50px;
 }
 
 .sidebar:before,
@@ -4044,13 +4045,28 @@ Created using IcoMoon - icomoon.io
     left: 0;
 }
 
-.sidebar:after,
+/* .sidebar:after,
 .off-canvas-sidebar:after {
     background: #888;
     background: linear-gradient(#888 0%, #000 80%);
     z-index: 3;
+} */
+/*Grey color customer ###############################################3 */
+.sidebar[data-color="grey"]:after,
+.off-canvas-sidebar[data-color="grey"]:after {
+    background: #777777;
 }
 
+.sidebar[data-color="grey"] .nav li.active>a:not([data-toggle="collapse"]),
+.off-canvas-sidebar[data-color="grey"] .nav li.active>a:not([data-toggle="collapse"]) {
+    color: #979797;
+}
+
+.sidebar[data-color="grey"] .nav li.active>a:not([data-toggle="collapse"]) i,
+.off-canvas-sidebar[data-color="grey"] .nav li.active>a:not([data-toggle="collapse"]) i {
+    color: #aaa;
+}
+/* ################################# */
 .sidebar[data-color="blue"]:after,
 .off-canvas-sidebar[data-color="blue"]:after {
     background: #2CA8FF;
@@ -4183,9 +4199,9 @@ Created using IcoMoon - icomoon.io
     height: 260px;
     padding-top: 80px;
     padding-bottom: 45px;
-    background: #141E30;
+    background: grey;
     /* fallback for old browsers */
-    background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    /* background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%); */
     position: relative;
     overflow: hidden;
 }
@@ -4567,12 +4583,14 @@ Created using IcoMoon - icomoon.io
 
 .card {
     border: 0;
-    border-radius: 0.1875rem;
+    
+    border-radius: 20px;
     display: inline-block;
     position: relative;
     width: 100%;
     margin-bottom: 20px;
-    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+    box-shadow: 15px 15px 15px 15px rgba(39, 39, 39, 0.1);
+    
 }
 
 .card [data-notify="container"].alert {
@@ -4707,6 +4725,7 @@ Created using IcoMoon - icomoon.io
 .card-chart .table td {
     border-top: none;
     border-bottom: 1px solid #e9ecef;
+    backdrop-filter: blur(9px);
 }
 
 .card-chart .card-progress {

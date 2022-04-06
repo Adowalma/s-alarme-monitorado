@@ -4,6 +4,11 @@
     <!-- <div class="navbar-wrapper">
     <a class="navbar-brand" href="#pablo">{{ $namePage }}</a>
     </div> -->
+    <!-- @if($activePage == 'welcome' ||$activePage == 'register')
+      <div class="section-image" style="width:60px;">
+        <img src="{{ asset('assets/img/Sam/3x/Ativo 2.svg') }}" alt="">
+      </div>
+    @endif -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-bar navbar-kebab"></span>
       <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -11,11 +16,13 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
+      @if ($activePage == 'register' || ($activePage == 'login'))
         <li class="nav-item">
-          <a href="{{ route('login') }}" class="nav-link">
-            <i class="now-ui-icons design_app"></i> {{ __("Dashboard") }}
+          <a href="{{ route('home') }}" class="nav-link">
+            <i class="now-ui-icons design_app"></i> {{ __("Home") }}
           </a>
         </li>
+      @endif
         <li class="nav-item @if ($activePage == 'register') active @endif">
           <a href="{{ route('register') }}" class="nav-link">
             <i class="now-ui-icons tech_mobile"></i> {{ __("Register") }}

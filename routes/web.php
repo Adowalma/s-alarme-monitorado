@@ -16,16 +16,20 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+	// dd(auth()->user());
+	if(auth()->user()==null){
+		return view('welcome');
+	}else{
+		return view('home');
+	}
+    
+})->name('home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	// ************************** User  ********************************
@@ -46,15 +50,15 @@ Route::group(['middleware' => 'auth'], function () {
 	// ************************** Posto  ********************************
 	Route::get('posto/listar', 'PostoController@index')->middleware('can:isAdmin');
 	Route::resource('posto', 'PostoController', ['except' => ['show','index']])->middleware('can:isAdmin');
-
+	
+	
+	// ************************** Product  ********************************
+	Route::get('produto/listar', 'ProductController@index')->name('produto.index')->middleware('can:isAdmin');
+	Route::resource('produto', 'ProductController', ['except' => ['show','index']])->middleware('can:isAdmin');
+	Route::post('produtoType/create', 'ProductController@storeType')->name('produtoType.store')->middleware('can:isAdmin');
+	
+	
+	// ************************** Funcionario  ********************************
+	Route::get('funcionario/listar', 'FuncionarioController@index')->name('funcionario.index')->middleware('can:isAdmin');
+	Route::resource('funcionario', 'FuncionarioController', ['except' => ['show','index']])->middleware('can:isAdmin');
 });
-
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-

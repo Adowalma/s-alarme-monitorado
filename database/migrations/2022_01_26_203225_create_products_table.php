@@ -15,21 +15,12 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->text('descricao')->nullable();
-            $table->string('product_key',16)->unique();
+            $table->string('product_key',20)->nullable()->unique();
             $table->timestamps();
         });
-
-        // create product_key random
-        $existing_products = Product::where('product_key', '')->get();
-
-        foreach($existing_products as $products)
-        {
-            $products->product_key = str_random(16);
-            $products->save();                
-        }
     }
 
     /**

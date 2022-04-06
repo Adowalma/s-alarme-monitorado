@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Product;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name','username',
         'email',
         'password',
+        'estado'
     ];
 
     /**
@@ -41,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function products(){
+        return $this->belongsToMany(
+            Product::class,
+            'products_users',
+            'user_id',
+            'product_id'
+        );
+    }
 }

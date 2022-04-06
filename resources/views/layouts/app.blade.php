@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   @stack('meta')
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/eye-logo.png">
-  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/eye-logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/Sam/3x/Ativo 2.svg">
+  <link rel="icon" type="image/svg" href="{{ asset('assets') }}/img/Sam/3x/Ativo 2.svg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!-- Extra details for Live View on GitHub Pages -->
   <title>
