@@ -89,12 +89,12 @@
                 <p> {{ __("Listar Produtos") }} </p>
               </a>
             </li>
-            <!-- <li class="@if ($activePage == 'produtos_create') active @endif">
+            <li class="@if ($activePage == 'produtos_create') active @endif">
               <a href="{{ url('produto/create') }}">
                 <i class="now-ui-icons business_bank"></i>
                 <p> {{ __("Cadastrar Produtos") }} </p>
               </a>
-            </li>  -->
+            </li>
           </ul>
       
         </div>
@@ -105,8 +105,8 @@
           <p>{{ __('Notificações') }} <span class="badge badge-pill badge-danger">4</span></p>
         </a>
       </li>
-      <li class = " @if ($activePage == 'table') active @endif">
-        <a href="{{ route('page.index','table') }}">
+      <li class = " @if ($activePage == 'relatorio') active @endif">
+        <a href="{{ route('relatorio.gerar') }}">
           <i class="now-ui-icons files_single-copy-04"></i>
           <p>{{ __('Relatórios') }}</p>
         </a>

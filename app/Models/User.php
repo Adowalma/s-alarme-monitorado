@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Product;
+use App\Models\Urgency;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,6 +51,14 @@ class User extends Authenticatable
             'products_users',
             'user_id',
             'product_id'
+        );
+    }
+    public function urgencies(){
+        return $this->belongsToMany(
+            Urgency::class,
+            'uegencies_users',
+            'user_id',
+            'urgency_id'
         );
     }
 }

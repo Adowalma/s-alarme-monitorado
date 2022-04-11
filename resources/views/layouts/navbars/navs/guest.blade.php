@@ -23,14 +23,14 @@
           </a>
         </li>
       @endif
-        <li class="nav-item @if ($activePage == 'register') active @endif">
-          <a href="{{ route('register') }}" class="nav-link">
-            <i class="now-ui-icons tech_mobile"></i> {{ __("Register") }}
-          </a>
-        </li>
         <li class="nav-item @if ($activePage == 'login') active @endif ">
           <a href="{{ route('login') }}" class="nav-link">
             <i class="now-ui-icons users_circle-08"></i> {{ __("Login") }}
+          </a>
+        </li>
+        <li class="nav-item @if ($activePage == 'register') active @endif">
+          <a href="{{ route('register') }}" class="nav-link">
+            <i class="now-ui-icons tech_mobile"></i> {{ __("Register") }}
           </a>
         </li>
       </ul>

@@ -11,12 +11,12 @@
   </div>
   <div class="content " style="background-color: grey;">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-6 col-md-6">
         <div class="card card-chart no-border input-group">
           <div class="card-header ">
             <h5 class="card-category">Alcance Global</h5>
-            <h4 class="card-title">Venda do dispositivo</h4>
-            <div class="dropdown">
+            <h4 class="card-title">Venda dos dispositivos</h4>
+            <!-- <div class="dropdown">
               <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                 <i class="now-ui-icons loader_gear"></i>
               </button>
@@ -25,45 +25,45 @@
                 <a class="dropdown-item" href="#">Something else here</a>
                 <a class="dropdown-item text-danger" href="#">Remover Dados</a>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="card-body">
             <div class="chart-area">
               <!-- <canvas id="lineChartExample"></canvas> -->
 
               <!-- Chart's container -->
-    <div id="chart" style="height: 300px;"></div>
-    <!-- Charting library -->
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-    <!-- Your application script -->
-    <script>
-        const chart = new Chartisan({
-            el: '#chart',
-            url: "@chart('my_chart')",
-            hooks: new ChartisanHooks()
-             .colors(['#4299E1','#FE0045','#C07EF1','#67C560','#ECC94B'])
-                .datasets('line')
-                // .axis(true)
+            <div id="chart" style="height: 290px;"></div>
+            <!-- Charting library -->
+            asset('assets') }}/css/bootstrap.min.css
+            <script src="{{asset('assets')}}/js/echarts/echarts.min.js"></script>
+            <!-- Chartisan -->
+            <script src="{{asset('assets')}}/js/echarts/chartisan_echarts.js"></script>
+            <!-- Your application script -->
+            <script>
 
-                .legend()
-                .colors('blue')
-                .tooltip()
-                .axis(true)
-        });
-    </script>
+                const chart = new Chartisan({
+                    el: '#chart',
+                    url: "@chart('my_chart')",
+                    hooks: new ChartisanHooks()
+                    .colors(['#4299E1','#FE0045','#C07EF1','#67C560','#ECC94B'])
+                        .datasets('bar')
+                        .legend()
+                        // .colors('blue')
+                        .tooltip()
+                        .axis(true)
+                });
+            </script>
 
             </div>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="now-ui-icons loader_refresh spin"></i> Atualizado
+              <i class="now-ui-icons loader_refresh spin"></i> 
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6">
+      <!-- <div class="col-lg-4 col-md-6">
         <div class="card card-chart">
           <div class="card-header">
             <h5 class="card-category">Adesão em 2022</h5>
@@ -81,8 +81,8 @@
           </div>
           <div class="card-body">
             <div class="chart-area">
-              <!-- <canvas id="bigDashboardChart"></canvas>  -->
-            </div>
+              <canvas id="lineChartExample"></canvas>
+          </div>
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -90,8 +90,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
+      </div> -->
+      <div class="col-lg-6 col-md-6">
         <div class="card card-chart">
           <div class="card-header">
             <h5 class="card-category"> Estátisticas de requisições</h5>
@@ -100,13 +100,29 @@
           <div class="card-body">
             <div class="chart-area">
 
-              <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+              <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> -->
               <!-- <canvas id="barChartSimpleGradientsNumbers"></canvas> -->
+               <!-- Chart's container -->
+               <div id="chart_urgency" style="height: 280px;"></div>
+                <!-- Charting library -->
+                <!-- Your application script -->
+                <script>
+                    const chart2 = new Chartisan({
+                        el: '#chart_urgency',
+                        url: "@chart('urgency_chart')",
+                        hooks: new ChartisanHooks()
+                        .colors(['#4299E1','#FE0045','#C07EF1','#67C560','#ECC94B'])
+                            .datasets('pie')
+                            .legend()
+                            // .tooltip()
+                            .axis(false)
+                    });
+                </script>
             </div>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+              <i class="now-ui-icons loader_refresh spin"></i>
             </div>
           </div>
         </div>

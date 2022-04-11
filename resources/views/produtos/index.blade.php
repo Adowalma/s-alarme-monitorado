@@ -25,7 +25,7 @@
             <table id="datatable" class="table table-striped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>Nome</th>
+                  <th>Modelo</th>
                   <th>Chave do Producto</th>
                   <th>Descricao</th>
                   <th>Propietário</th>

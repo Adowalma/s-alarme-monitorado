@@ -61,4 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
 	// ************************** Funcionario  ********************************
 	Route::get('funcionario/listar', 'FuncionarioController@index')->name('funcionario.index')->middleware('can:isAdmin');
 	Route::resource('funcionario', 'FuncionarioController', ['except' => ['show','index']])->middleware('can:isAdmin');
+
+	// ************************** PDF *****************************
+	Route::get('relatorio/pdf', 'RelatorioController@exibirPDF')->name('relatorio.pdf');
+	Route::get('relatorio/listar', 'RelatorioController@index')->name('relatorio.index');
+	Route::get('relatorio/gerar', 'RelatorioController@gerar')->name('relatorio.gerar');
 });

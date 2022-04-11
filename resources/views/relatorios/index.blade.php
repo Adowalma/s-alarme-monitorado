@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'namePage' => 'Table List',
     'class' => 'sidebar-mini',
-    'activePage' => 'table',
+    'activePage' => 'relatorio',
   ])
 
 @section('content')
@@ -16,25 +16,29 @@
           <div class="card">
             <div class="card-body">
               <div class="places-buttons">
-                <form>
+                <form method="GET" action="{{route('relatorio.gerar')}}">
                   <div class="row d-flex justify-content-end">
-                    <div class="col-md-6 ml-auto mr-auto">
-                      <!-- <h4 class="card-title">
-                      Resultado da Pesquisa
-                        <p class="category">Clique para ver os detalhes</p>
-                      </h4> -->
-                      <div class="input-group border-0">
-                        <input type="date" name="data_start" value="" class="form-control">
-                      </div>
+                  <div class="col-md-2"></div>
+
+                    <div class="col-md-7 ml-auto mr-auto ">
+                      <label class="form-label" for="select">
+                        Tipo relatório:
+                      </label>
+                      <!-- <div class="input-group border-0">
+                        <input type="date" name="data_start" value="" class="form-control" required>
+                      </div> -->
+                      <select class="form-select mt-1 form-control" id="select" name="tipo">
+                        <option value="1">Diário</option>
+                        <option value="2">Semanal</option>
+                        <option value="2">Mensal</option>
+                        <option value="3">Anual</option>
+                      </select>
                     </div>
-                    <div class="col-md-6 ml-auto mr-auto text-left">
-                      <div class="input-group border-0">
-                        <input type="date" value="" class="form-control">
-                      </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-round btn-primary form-control " title="Pesquisar"> <i class="now-ui-icons ui-1_zoom-bold"></i></button>
+                        <button class="btn btn-round btn-primary form-control"> Gerar PDF</button>
                     </div> 
-                    <div class="col-md-2 ">
-                        <button type="submit" class="mt-1 btn btn-round btn-primary form-control " title="Pesquisar"> <i class="now-ui-icons ui-1_zoom-bold"></i></button>
-                    </div> 
+                  </div> 
                   </div> 
                 </form>
             </div>
@@ -52,29 +56,33 @@
                           Data - Hora
                         </th>
                         <th>
-                          Total de alarmes
+                          Estado
                         </th>
-                        <th class="text-center">
+                        <!-- <th class="text-center">
                           Ações
-                        </th>
+                        </th> -->
                       </thead>
                       <tbody>
+                        @forelse($urgencies as $urgency)
                         <tr>
                           <td>
-                          Dakota Rice 
+                          {{$urgency->name}}
                           </td>
                           <td>
-                            16 Mar 08:57
+                          {{$urgency->created_at}}
                           </td>
                           <td class="text-center">
-                            3
+                          {{$urgency->estado}}
                           </td>
-                          <td class="text-left">
+                          <!-- <td class="text-left">
                               
                             <a class="btn btn-primary form-control" href="{{route('relatorio.pdf')}}">Imprimir</a>
 
-                          </td>
+                          </td> -->
                         </tr>
+                        @empty
+                        <td col="4">Por favor faça a pesquisa</td>
+                        @endforelse
                       </tbody>
                     </table>
                     

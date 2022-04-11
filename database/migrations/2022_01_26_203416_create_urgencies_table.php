@@ -14,7 +14,7 @@ class CreateUrgenciesTable extends Migration
     public function up()
     {
         Schema::create('urgencies', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('descricao');
             $table->enum('estado', ['Pendente','Em execucao','Resolvido', 'Descartado']);
             $table->timestamps();
