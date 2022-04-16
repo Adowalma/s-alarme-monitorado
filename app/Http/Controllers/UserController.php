@@ -18,4 +18,15 @@ class UserController extends Controller
     {
         return view('users.index', ['users' => $model->paginate(15)]);
     }
+    public function destroy($id){
+            User::find($id)->delete();
+            return  redirect()->back()->with('mensagen','Usuario Eliminado com Sucesso!');
+        
+    }
+    public function bloquear( $id )
+    {   
+           User::find($id )->update( ['estado'=>'Desativado'] );
+           return redirect()->back();
+       }
+   
 }

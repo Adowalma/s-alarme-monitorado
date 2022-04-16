@@ -25,7 +25,7 @@
             <table id="datatable" class="table table-striped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>Modelo</th>
+                  <th>Nome</th>
                   <th>Chave do Producto</th>
                   <th>Descricao</th>
                   <th>Propietário</th>
@@ -39,7 +39,7 @@
                 <tr>
                   
                   <td>
-                    {{$prop->name}}
+                    {{$prop->tipo}}
                   </td>
                   <td> {{$prop->product_key}} </td>
                   <td>{{$prop->descricao}}</td>

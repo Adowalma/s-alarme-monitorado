@@ -33,7 +33,8 @@ class ProductController extends Controller
     //   ->get();
 
       $proprietario= Product::leftJoin('users','products.user_id','=','users.id')
-          ->select('products.*','users.name')
+          ->join('product_types', 'products.type_id','=','product_types.id')
+          ->select('products.*','users.name','product_types.*')
          ->get();
     
     return view('produtos.index', compact('proprietario'));
@@ -46,7 +47,7 @@ class ProductController extends Controller
    */
   public function create()
   {
-    $types = $this->type->orderBy('name','asc')->pluck('name','id');
+    $types = $this->type->orderBy('tipo','asc')->pluck('tipo','id');
     return view('produtos.create', compact('types'));
   }
 
@@ -61,16 +62,16 @@ class ProductController extends Controller
     //
     $request->validate(
       [
-        'name'=>['required','string','min:5','unique:products,name'],
         'type_id'=>['required','Integer']
       ]
     );
     // $produto = Product::create($request->all());
     // $x= rtrim(chunk_split(Str::random(16), 4, '-'), '-');
     // dd($x);
+    // dd($request->quantidade);
+
+    for($i=1;$i<=$request->quantidade;$i++)
     Product::create([
-      'name' => $request->name,
-      'descricao' => $request->descricao,
       'type_id' => $request->type_id,
       'product_key' => rtrim(chunk_split(Str::random(16), 4, '-'), '-')
     ]);
@@ -86,7 +87,9 @@ class ProductController extends Controller
     //
     $request->validate(
       [
-        'name'=>['required','string','min:5','unique:products,name'],
+        'tipo'=>['required','string','min:5'],
+        'descricao'=>['required'],
+        
         // 'type_id'=>['required','Integer']
       ]
     );

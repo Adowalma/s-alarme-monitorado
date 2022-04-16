@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
-    'namePage' => 'Lista de Usuários',
-    'activePage' => 'users',
+    'namePage' => 'Lista de Clientes',
+    'activePage' => 'clientes',
     'activeNav' => '',
 ])
 
@@ -13,8 +13,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-              <a class="btn btn-primary btn-round text-white pull-right" href="{{route('funcionario.create')}}" title="Adicionar Funcionários">Adicionar</a>
-            <h4 class="card-title">{{__("Funcionários")}}</h4>
+            <h4 class="card-title">{{__("Clientes")}}</h4>
             <div class="col-12 mt-2">
                                         </div>
           </div>
@@ -56,8 +55,9 @@
                                 <i class="fa fa-clone" aria-hidden="true"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                            <a href="{{ route('user.bloquear', $user->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Usuário</a>
+                           <a href="{{ url('') }}" class="dropdown-item" name="aluno">Ver Histórico</a>
+                           
+                           <a href="{{ route('user.bloquear', $user->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Usuário</a>
                                
 
                             <a href="{{route('user.destroy', $user->id)}}" class="dropdown-item"

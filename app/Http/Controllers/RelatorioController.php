@@ -6,12 +6,13 @@ use App\Models\Urgency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use PDF;
 
 class RelatorioController extends Controller
 {
     //
     public function index(){
-        return view('relatorios.index');
+        return view('relatorios.urgencia');
     }
     public function gerar(Request $request){
         $request->validate(
@@ -40,15 +41,15 @@ class RelatorioController extends Controller
         ->select("urgencies.*","users.name")
         ->get();
         // dd($urgencies);        
-        return view('relatorios.index', compact('urgencies'));
+        return view('relatorios.urgencia', compact('urgencies'));
     }
     
     public function exibirPDF()
     {
         $urgencies = Urgency::all();
     
-        return \PDF::loadView('pdf.relatorio', compact('urgencies'))
+        return PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pdf.urgencia', compact('urgencies'))
                     // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
-                    ->stream('relatorio.pdf');
+                    ->stream('relatorio.urgencia');
     }
 }

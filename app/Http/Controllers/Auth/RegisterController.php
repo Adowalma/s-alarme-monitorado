@@ -67,10 +67,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // verificando se o product key exist e posteriormente se tem proprietario
         $x= Product::where('product_key', $data['product_key']);
         if($x->count('id')){
             if($x->where('user_id', 1)->count('id')<1){
-                // dd(11); 
             $user =  User::create([
             'name' => $data['name'],
             'username' => $data['username'],

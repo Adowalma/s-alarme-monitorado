@@ -32,12 +32,25 @@
             <li class="@if ($activePage == 'users') active @endif">
               <a href="{{ route('user.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("Listar Usuários") }} </p>
+                <p> {{ __("Listar Todos Usuários") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'clientes') active @endif">
+              <a href="{{ route('cliente.index') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Listar Clientes") }} </p>
               </a>
             </li>
 
             
-          <ul class="nav">
+            <li class="@if ($activePage == 'funcionarios') active @endif">
+              <a href="{{ route('funcionario.index') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Cadastrar Funcionários") }} </p>
+              </a>
+            </li>
+
+                        
             <li class="@if ($activePage == 'funcionarios') active @endif">
               <a href="{{ route('funcionario.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
@@ -46,7 +59,7 @@
             </li>
 
             
-            <li class="@if ($activePage == 'postos') active @endif">
+            <!-- <li class="@if ($activePage == 'postos') active @endif">
               <a href="{{ url('posto/listar') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("Listar Postos") }} </p>
@@ -57,7 +70,7 @@
                 <i class="now-ui-icons business_bank"></i>
                 <p> {{ __("Cadastrar Postos") }} </p>
               </a>
-            </li> 
+            </li>  -->
           </ul>
       
         </div>
@@ -105,11 +118,34 @@
           <p>{{ __('Notificações') }} <span class="badge badge-pill badge-danger">4</span></p>
         </a>
       </li>
-      <li class = " @if ($activePage == 'relatorio') active @endif">
-        <a href="{{ route('relatorio.gerar') }}">
-          <i class="now-ui-icons files_single-copy-04"></i>
-          <p>{{ __('Relatórios') }}</p>
+      <li>
+        
+        <a data-toggle="collapse" href="#relCollapse">
+          <!-- <i class="fab fa-laravel"></i> -->
+            <i class="now-ui-icons files_single-copy-04"></i> 
+
+        <p>
+          {{ __("Relatórios") }}
+          <b class="caret"></b>
+        </p>
         </a>
+        <div class="collapse " id="relCollapse">
+          <ul class="nav">
+            <li class="@if ($activePage == 'relatorio') active @endif">
+              <a href="{{ route('relatorio.gerar') }}">
+                <i class="now-ui-icons files_single-copy-04"></i>
+                <p> {{ __("Relatório de Venda") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'relatorio') active @endif">
+              <a href="{{ route('relatorio.gerar') }}">
+                <i class="now-ui-icons files_single-copy-04"></i>
+                <p> {{ __("Relatórios das Urgências") }} </p>
+              </a>
+            </li>
+          </ul>
+      
+        </div>
       </li>
     </ul>
     

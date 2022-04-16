@@ -23,13 +23,14 @@ class SampleChart extends BaseChart
     {
         // $products = DB::table('products')->get();
         $products = DB::table('products')
-        // ->join('product_types', 'products.type_id', '=', 'product_types.id')
-        // ->select('product_types.name')
-        ->get();
+            ->join('product_types', 'products.type_id', '=', 'product_types.id')
+            -> select('product_types.*')
+            ->groupBy('product_types.tipo')
+            ->get();
         $labels = [];
         $count = [];
         foreach ($products as $product){
-            array_push($labels,$product->name);
+            array_push($labels,$product->tipo);
         }
         $values = Product::with('users' )->get();
         foreach ($values as $item) {

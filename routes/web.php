@@ -33,7 +33,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 	// ************************** User  ********************************
-	Route::resource('user', 'UserController', ['except' => ['show']])->middleware('can:isAdmin');
+	Route::resource('user', 'UserController', ['except' => ['show','destroy']])->middleware('can:isAdmin');
+	Route::get('user/delete/{id}', 'UserController@destroy')->name('user.destroy')->middleware('can:isAdmin');
+	Route::get('user/bloquear/{id}', 'UserController@bloquear')->name('user.bloquear')->middleware('can:isAdmin');
+
+
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -61,6 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
 	// ************************** Funcionario  ********************************
 	Route::get('funcionario/listar', 'FuncionarioController@index')->name('funcionario.index')->middleware('can:isAdmin');
 	Route::resource('funcionario', 'FuncionarioController', ['except' => ['show','index']])->middleware('can:isAdmin');
+	
+	// ************************** Cliente  ********************************
+	Route::get('cliente/listar', 'ClienteController@index')->name('cliente.index')->middleware('can:isAdmin');
+	Route::resource('cliente', 'ClienteController', ['except' => ['show','index']])->middleware('can:isAdmin');
 
 	// ************************** PDF *****************************
 	Route::get('relatorio/pdf', 'RelatorioController@exibirPDF')->name('relatorio.pdf');

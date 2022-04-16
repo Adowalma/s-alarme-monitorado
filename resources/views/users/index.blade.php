@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
-    'namePage' => 'Lista de Funcionarios',
+    'namePage' => 'Lista de Usuarios',
     'activePage' => 'users',
     'activeNav' => '',
 ])
@@ -50,14 +50,29 @@
                     <td>{{$user->estado}}</td>
                     <!-- <td>25/02/2020 10:14</td> -->
                     @if($user->role=="admin")
-                      <td>
-
+                      <td class="text-right">
+                        See only
                       </td>
                     @else
                       <td class="text-right">
-                                             <a type="button" href="#" rel="tooltip" class="btn btn-primary btn-icon btn-sm " data-original-title="" title="">
+                                             <!-- <a type="button" href="#" rel="tooltip" class="btn btn-primary btn-icon btn-sm " data-original-title="" title="">
                         <i class="now-ui-icons ui-2_settings-90"></i>
-                      </a>
+                      </a> -->
+                      <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-clone" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <a href="{{ url('') }}" class="dropdown-item" name="aluno">Ver Histórico</a>
+                           
+                           <a href="{{ route('user.bloquear', $user->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Usuário</a>
+                               
+
+                            <a href="{{route('user.destroy', $user->id)}}" class="dropdown-item"
+                                onclick="return confirm('Tens certeza que pretende eliminar?');">Eliminar</a>
+                            
+                        </div>
                     </td>
                     @endif
                   </tr>

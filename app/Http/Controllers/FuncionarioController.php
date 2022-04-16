@@ -48,15 +48,13 @@ class FuncionarioController extends Controller
             'username' => ['required', 'string','max:20','unique:users'],
             'email' => ['required', 'string', 'email', 'max:150', 'unique:users'],
         ]);
-
-       $role='funcionario';
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'role'=>$role,
             'password' => Hash::make('password'),
           ]);
+          User::where('username',$request->username )->update( ['role'=>'funcionario'] );
 
           return redirect()->route('funcionario.index');
     }
