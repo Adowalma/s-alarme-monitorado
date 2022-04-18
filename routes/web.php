@@ -30,6 +30,18 @@ Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Auth::routes();
 
+// ************************E-commerce Pages***************************
+Route::get('/e-commerce', 'SitePagesController@index')->name('ecommerce.index');
+Route::get('/cart', 'SitePagesController@cart')->name('cart');
+Route::get('/checkout', 'SitePagesController@checkout')->name('checkout');
+Route::get('/about', 'SitePagesController@about')->name('about');
+Route::get('/contact', 'SitePagesController@contact')->name('contact');
+Route::get('/news', 'SitePagesController@news')->name('news');
+Route::get('/shop', 'SitePagesController@shop')->name('shop');
+Route::get('/single-news', 'SitePagesController@singleNews')->name('singleNews');
+Route::get('/single-product', 'SitePagesController@singleProduct')->name('singleProduct');
+
+
 
 Route::group(['middleware' => 'auth'], function () {
 	// ************************** User  ********************************
@@ -59,7 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
 	// ************************** Product  ********************************
 	Route::get('produto/listar', 'ProductController@index')->name('produto.index')->middleware('can:isAdmin');
 	Route::resource('produto', 'ProductController', ['except' => ['show','index']])->middleware('can:isAdmin');
-	Route::post('produtoType/create', 'ProductController@storeType')->name('produtoType.store')->middleware('can:isAdmin');
+
+	// ************************** Product Type ********************************
+	Route::get('produtoType/listar', 'ProductTypeController@index')->name('produtoType.index')->middleware('can:isAdmin');
+	Route::get('produtoType/delete/{id}', 'ProductTypeController@destroy')->name('produtoType.destroy')->middleware('can:isAdmin');
+	Route::resource('produtoType', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
+
 	
 	
 	// ************************** Funcionario  ********************************

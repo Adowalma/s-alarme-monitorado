@@ -17,6 +17,9 @@ class CreateProductTypesTable extends Migration
             $table->increments('id');
             $table->string('tipo')->unique();
             $table->text('descricao')->nullable();
+            $table->float('preco',10,2);
+            $table->string('image');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }

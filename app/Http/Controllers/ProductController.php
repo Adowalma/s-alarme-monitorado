@@ -26,12 +26,6 @@ class ProductController extends Controller
    */
   public function index()
   {
-      //
-    // $proprietario=DB::table('products')
-    //   ->leftJoin('users', 'products.user_id', '=', 'users.id')
-    //   ->select("products.*",'users.name')
-    //   ->get();
-
       $proprietario= Product::leftJoin('users','products.user_id','=','users.id')
           ->join('product_types', 'products.type_id','=','product_types.id')
           ->select('products.*','users.name','product_types.*')
@@ -62,13 +56,9 @@ class ProductController extends Controller
     //
     $request->validate(
       [
-        'type_id'=>['required','Integer']
+        'type_id'=>['required','Integer'],
       ]
     );
-    // $produto = Product::create($request->all());
-    // $x= rtrim(chunk_split(Str::random(16), 4, '-'), '-');
-    // dd($x);
-    // dd($request->quantidade);
 
     for($i=1;$i<=$request->quantidade;$i++)
     Product::create([
@@ -77,25 +67,6 @@ class ProductController extends Controller
     ]);
 
     return redirect()->route('produto.index');
-  }
-
-  /**  create prduct type
-   * 
-  */
-  public function storeType(Request $request)
-  {
-    //
-    $request->validate(
-      [
-        'tipo'=>['required','string','min:5'],
-        'descricao'=>['required'],
-        
-        // 'type_id'=>['required','Integer']
-      ]
-    );
-    $produto = $this->type::create($request->all());
-
-    return redirect()->route('produto.create');
   }
 
   /**
@@ -131,7 +102,6 @@ class ProductController extends Controller
   {
       //
   }
-
   /**
    * Remove the specified resource from storage.
    *
@@ -141,5 +111,8 @@ class ProductController extends Controller
   public function destroy(Produto $produto)
   {
       //
+      $produto->delete();
+        return redirect()->route('produto.index')
+        ->with('success','Produto deleted successfully');
   }
 }

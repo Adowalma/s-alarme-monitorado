@@ -59,13 +59,13 @@
             </li>
 
             
-            <!-- <li class="@if ($activePage == 'postos') active @endif">
+            <li class="@if ($activePage == 'postos') active @endif">
               <a href="{{ url('posto/listar') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("Listar Postos") }} </p>
               </a>
             </li>
-            <li class="@if ($activePage == 'postos create') active @endif">
+            <!-- <li class="@if ($activePage == 'postos create') active @endif">
               <a href="{{ url('posto/create') }}">
                 <i class="now-ui-icons business_bank"></i>
                 <p> {{ __("Cadastrar Postos") }} </p>
@@ -106,6 +106,12 @@
               <a href="{{ url('produto/create') }}">
                 <i class="now-ui-icons business_bank"></i>
                 <p> {{ __("Cadastrar Produtos") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'produtos_create') active @endif">
+              <a href="{{ route('produtoType.index') }}">
+                <i class="now-ui-icons business_bank"></i>
+                <p> {{ __("Listar tipo de Produtos") }} </p>
               </a>
             </li>
           </ul>

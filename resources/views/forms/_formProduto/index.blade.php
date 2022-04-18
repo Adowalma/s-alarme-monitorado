@@ -1,18 +1,4 @@
 <div class="row">
-  <!--Begin input img -->
-<div class="col-6 input-group {{ $errors->has('img') ? ' has-danger' : '' }}">
-  <div class="input-group-prepend">
-  <div class="input-group-text">
-    <i class="now-ui-icons users_circle-08"></i>
-  </div>
-  </div>
-  <input id="img" class="form-control {{ $errors->has('img') ? ' is-invalid' : '' }}" type="file" name="img" value="{{ old('img') }}" accept="image/*" required autofocus>
-  @if ($errors->has('img'))
-    <span class="invalid-feedback" style="display: block;" role="alert">
-      <strong>{{ $errors->first('img') }}</strong>
-    </span>
-  @endif
-</div>
 
 <!-- input product-type -->
 <div class="col-6 input-group form-floating">
@@ -48,20 +34,6 @@
   @if ($errors->has('quantidade'))
     <span class="invalid-feedback" style="display: block;" role="alert">
       <strong>{{ $errors->first('quantidade') }}</strong>
-    </span>
-  @endif
-</div>
-<!--Begin input preco -->
-<div class="col-6 input-group {{ $errors->has('preco') ? ' has-danger' : '' }}">
-  <div class="input-group-prepend">
-  <div class="input-group-text">
-    <i class="now-ui-icons users_circle-08"></i>
-  </div>
-  </div>
-  <input id="preco" class="form-control {{ $errors->has('preco') ? ' is-invalid' : '' }}" placeholder="{{ __('Preço do produto') }}" type="number" name="preco" value="{{ old('preco') }}" required autofocus>
-  @if ($errors->has('preco'))
-    <span class="invalid-feedback" style="display: block;" role="alert">
-      <strong>{{ $errors->first('preco') }}</strong>
     </span>
   @endif
 </div>

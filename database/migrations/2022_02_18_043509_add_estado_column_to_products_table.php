@@ -15,7 +15,7 @@ class AddEstadoColumnToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
-            $table->enum('estado',['Bom','Descarregado','Com avaria']);
+            $table->enum('estado',['Ativo','Desativado']);
         });
     }
 

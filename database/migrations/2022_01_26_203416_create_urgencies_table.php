@@ -17,6 +17,7 @@ class CreateUrgenciesTable extends Migration
             $table->increments('id');
             $table->string('descricao');
             $table->enum('estado', ['Pendente','Em execucao','Resolvido', 'Descartado']);
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }

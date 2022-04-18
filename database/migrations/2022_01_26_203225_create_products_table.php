@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_key',20)->nullable()->unique();
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }
