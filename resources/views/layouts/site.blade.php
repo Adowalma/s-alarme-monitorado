@@ -20,7 +20,7 @@
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="{{ asset('assets') }}/css_E-commerce/all.min.css">
 	<!-- bootstrap -->
-  <link href="{{ asset('assets') }}/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="{{ asset('assets') }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="{{ asset('assets') }}/css_E-commerce/owl.carousel.css">
 	<!-- magnific popup -->
@@ -68,26 +68,36 @@
 										<li><a href="index_2.html">Slider Home</a></li>
 									</ul> -->
 								</li>
-								<li><a href="{{route('about')}}">About</a></li>
-								<li><a href="{{route('news')}}">News</a>
+								<li><a href="{{route('about')}}">Sobre</a></li>
+								<li><a href="{{route('news')}}">Ajuda e Informações</a>
 									<ul class="sub-menu">
-										<li><a href="{{route('news')}}">News</a></li>
-										<li><a href="{{route('singleNews')}}">Single News</a></li>
+										<!-- <li><a href="{{route('news')}}">News</a></li> -->
+										<li><a href="{{route('singleNews')}}">Ajuda e Dicas</a></li>
+										<li><a href="{{route('singleNews')}}">Dicas de Segurança</a></li>
+										<li><a href="{{route('singleNews')}}">Perguntas Frequentes</a></li>
 									</ul>
 								</li>
-								<li><a href="{{route('contact')}}">Contact</a></li>
-								<li><a href="{{route('shop')}}">Shop</a>
+								<li><a href="{{route('contact')}}">Contactos</a></li>
+								<li><a href="{{route('shop')}}">Compras</a>
 									<ul class="sub-menu">
-										<li><a href="{{route('shop')}}">Shop</a></li>
-										<li><a href="{{route('checkout')}}">Check Out</a></li>
+										<li><a href="{{route('shop')}}">Compras</a></li>
+										<li><a href="{{route('checkout')}}">Pagamento</a></li>
 										<li><a href="{{route('singleProduct')}}">Single Product</a></li>
-										<li><a href="{{route('cart')}}">Cart</a></li>
+										<li><a href="{{route('cart')}}">Carrinho</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
+											<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background-color:#F28123;">{{ count((array) session('cart')) }}</span>
+										</a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										@if(Auth::check())
+										<a href="{{ route('dashboard') }}" class="nav-link">{{ __("Entrar") }}</a>
+										@else
+										<a href="{{ route('login') }}" class="nav-link">{{ __("Login") }}</a>
+										<a href="{{ route('register') }}" class="nav-link"> {{ __("Register") }}</a>
+										@endif
 									</div>
 								</li>
 							</ul>
@@ -133,11 +143,16 @@
 		</div>
 	</div>
 	<!-- end copyright -->
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    
 	
 	<!-- jquery -->
-  <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
+  <script src="{{ asset('assets') }}/js_E-commerce/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
-  <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
+  <script src="{{ asset('assets') }}/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
 	<script src="{{ asset('assets') }}/js_E-commerce/jquery.countdown.js"></script>
 	<!-- isotope -->
@@ -154,6 +169,8 @@
 	<script src="{{ asset('assets') }}/js_E-commerce/sticker.js"></script>
 	<!-- main js -->
 	<script src="{{ asset('assets') }}/js_E-commerce/main.js"></script>
+
+	@yield('scripts')
 
 </body>
 </html>

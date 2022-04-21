@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'namePage' => 'Register page',
     'activePage' => 'register',
-    'backgroundImage' => asset('assets') . "/img/cameras5.jpg",
+    'backgroundImage' => asset('assets') . "/img/cameras1-bw-reverse.jpg",
 ])
 
 @section('content')
@@ -9,42 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5 ml-auto mr-auto ">
-          <!-- <div class="info-area info-horizontal mt-4">
-            <div class="icon icon-primary">
-              <i class="now-ui-icons media-1_button-pause"></i>
-            </div> 
-            <div class="description ">
-              <h5 class="info-title font-weight-bold">{{ __('Economia') }}</h5>
-              <p class="description font-weight-bold">
-                {{ __("Economia de até 100% com despesas relacionadas ao monitoramento.") }}
-              </p>
-            </div>
-          </div> -->
-
-          <!-- <div class="info-area info-horizontal mt-5">
-            <div class="icon icon-info">
-              <i class="fas fa-user-shield"></i>
-            </div>
-            <div class="description">
-              <h5 class="info-title font-weight-bold">{{ __('Segurança') }}</h5>
-              <p class="description font-weight-bold font-italic">
-                {{ __('Atendimento de todos os eventos que aparecem na tela do operador, seguindo todos os procedimentos predeterminados na Ficha de Cadastro. Gravação e registro dos logs de todo o atendimento!') }}
-              </p>
-            </div>
-          </div>
-          <div class="info-area info-horizontal">
-            <div class="icon icon-primary">
-              <i class="fas fa-heartbeat"></i>
-            </div>
-            <div class="description">
-              <h5 class="info-title font-weight-bold">{{ __('Qualidade de Vida') }}</h5>
-              <p class="description font-weight-bold font-italic">
-                {{ __("Deixe de se preocupar com escalas, trabalhos noturnos, finais de semana e feriados. A sua nova Central de Monitoramento trabalha por você todos os dias!") }}
-              </p>
-            </div>
-          </div>
           
-        </div> -->
         <div class="col-md-12">
           <div class=" text-white text-center rounded shadow-lg " style="backdrop-filter: blur(10px);">
             <div class="card-header ">
@@ -66,7 +31,7 @@
                 <h5 class="card-description">  {{ __('or be classical') }}</h5>
               </div> -->
             </div>
-            <div class="card-body ">
+            <div class="card-body text-white">
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <!--Begin input username -->
@@ -111,20 +76,7 @@
                         <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
-                <!--Begin input user type-->
-                <div class="input-group {{ $errors->has('product_key') ? ' has-danger' : '' }}">
-                  <div class="input-group-prepend" style="background-color:transparent;">
-                    <div class="input-group-text" style="background-color:transparent;">
-                      <i class="now-ui-icons objects_key-25" style="background-color:transparent;"></i>
-                    </div>
-                  </div>
-                  <input class="form-control{{ $errors->has('product_key') ? ' is-invalid' : '' }}" placeholder="{{ __('Chave do produto') }}" type="text" name="product_key" value="{{ old('product_key') }}" required style="background-color:transparent;">
-                 </div>
-                 @if ($errors->has('product_key'))
-                    <span class="invalid-feedback" style="display: block;" role="alert">
-                        <strong>{{ $errors->first('product_key') }}</strong>
-                    </span>
-                @endif
+                
                 <!--Begin input password -->
                 <div class="input-group {{ $errors->has('password') ? ' has-danger' : '' }}">
                   <div class="input-group-prepend" style="background-color:transparent;">

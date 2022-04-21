@@ -18,4 +18,7 @@ class MapaController extends Controller
            return view('pages.maps', compact('uri'));
         }
     }
+    public function testMapa(){
+        return view('mapsteste');
+    }
 }

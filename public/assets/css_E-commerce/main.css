@@ -1468,15 +1468,15 @@ input[type="submit"] {
 }
 
 .homepage-bg-1 {
-  background-image: url(../img/hero-bg.jpg);
+  background-image: url(../img/cameras.jpg);
 }
 
 .homepage-bg-2 {
-  background-image: url(../img/hero-bg-2.jpg);
+  background-image: url(../img/bg-w6.jpg);
 }
 
 .homepage-bg-3 {
-  background-image: url(../img/hero-bg-3.jpg);
+  background-image: url(../img/cameras1.jpg);
 }
 
 .homepage-slider {
@@ -2117,7 +2117,7 @@ a.video-play-btn {
 .shop-banner {
   position: relative;
   background-color: #f5f5f5;
-  background-image: url(../img/1.jpg);
+  background-image: url(../img/banner-cam.jpg);
   background-size: cover;
   padding: 110px 0px 115px;
 }

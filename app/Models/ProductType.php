@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Product;
 
 
 class ProductType extends Model
@@ -19,5 +20,10 @@ class ProductType extends Model
         'image',
         'preco'
     ];
+
+    public function product()
+    {
+        return $this->hasmany(Product::class,'type_id','id');
+    }
 
 }

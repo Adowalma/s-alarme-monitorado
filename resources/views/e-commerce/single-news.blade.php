@@ -88,32 +88,32 @@
 						<div class="recent-posts">
 							<h4>Recent Posts</h4>
 							<ul>
-								<li><a href="{{route('single-news')}}">You will vainly look for fruit on it in autumn.</a></li>
-								<li><a href="{{route('single-news')}}">A man's worth has its season, like tomato.</a></li>
-								<li><a href="{{route('single-news')}}">Good thoughts bear good fresh juicy fruit.</a></li>
-								<li><a href="{{route('single-news')}}">Fall in love with the fresh orange</a></li>
-								<li><a href="{{route('single-news')}}">Why the berries always look delecious</a></li>
+								<li><a href="{{route('singleNews')}}">You will vainly look for fruit on it in autumn.</a></li>
+								<li><a href="{{route('singleNews')}}">A man's worth has its season, like tomato.</a></li>
+								<li><a href="{{route('singleNews')}}">Good thoughts bear good fresh juicy fruit.</a></li>
+								<li><a href="{{route('singleNews')}}">Fall in love with the fresh orange</a></li>
+								<li><a href="{{route('singleNews')}}">Why the berries always look delecious</a></li>
 							</ul>
 						</div>
 						<div class="archive-posts">
 							<h4>Archive Posts</h4>
 							<ul>
-								<li><a href="{{route('single-news')}}">JAN 2019 (5)</a></li>
-								<li><a href="{{route('single-news')}}">FEB 2019 (3)</a></li>
-								<li><a href="{{route('single-news')}}">MAY 2019 (4)</a></li>
-								<li><a href="{{route('single-news')}}">SEP 2019 (4)</a></li>
-								<li><a href="{{route('single-news')}}">DEC 2019 (3)</a></li>
+								<li><a href="{{route('singleNews')}}">JAN 2019 (5)</a></li>
+								<li><a href="{{route('singleNews')}}">FEB 2019 (3)</a></li>
+								<li><a href="{{route('singleNews')}}">MAY 2019 (4)</a></li>
+								<li><a href="{{route('singleNews')}}">SEP 2019 (4)</a></li>
+								<li><a href="{{route('singleNews')}}">DEC 2019 (3)</a></li>
 							</ul>
 						</div>
 						<div class="tag-section">
 							<h4>Tags</h4>
 							<ul>
-								<li><a href="{{route('single-news')}}">Apple</a></li>
-								<li><a href="{{route('single-news')}}">Strawberry</a></li>
-								<li><a href="{{route('single-news')}}">BErry</a></li>
-								<li><a href="{{route('single-news')}}">Orange</a></li>
-								<li><a href="{{route('single-news')}}">Lemon</a></li>
-								<li><a href="{{route('single-news')}}">Banana</a></li>
+								<li><a href="{{route('singleNews')}}">Apple</a></li>
+								<li><a href="{{route('singleNews')}}">Strawberry</a></li>
+								<li><a href="{{route('singleNews')}}">BErry</a></li>
+								<li><a href="{{route('singleNews')}}">Orange</a></li>
+								<li><a href="{{route('singleNews')}}">Lemon</a></li>
+								<li><a href="{{route('singleNews')}}">Banana</a></li>
 							</ul>
 						</div>
 					</div>

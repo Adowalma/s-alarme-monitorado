@@ -1,3 +1,5 @@
+@extends('layouts.site')
+
 @section('content')
 
 	<!-- breadcrumb-section -->

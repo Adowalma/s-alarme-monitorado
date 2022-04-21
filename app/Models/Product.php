@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\User;
+use App\Models\ProductType;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,5 +28,10 @@ class Product extends Model
             'product_id',
             'user_id'
         );
+    }
+
+    public function productType()
+    {
+        return $this->belongsTo(ProductType::class,'type_id','id');
     }
 }

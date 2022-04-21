@@ -55,7 +55,6 @@ class RegisterController extends Controller
             'username' => ['required', 'string','max:20','unique:users'],
             'email' => ['required', 'string', 'email', 'max:150', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'product_key' => ['required', 'string', "min:16",'max:20'],
         ]);
     }
 
@@ -67,24 +66,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // verificando se o product key exist e posteriormente se tem proprietario
-        $x= Product::where('product_key', $data['product_key']);
-        if($x->count('id')){
-            if($x->where('user_id', 1)->count('id')<1){
             $user =  User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);   
-        Product::where('product_key', $data['product_key'])->update(array('user_id' => $user->id));
-            }else{
-                dd("Product key ja se encontra em utilizacao");
-            }
-            
-        }else{
-            dd('Product key inexistente');
-        }
+        ]);
         return $user;
     }
 }

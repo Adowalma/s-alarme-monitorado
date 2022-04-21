@@ -8,8 +8,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Cart</h1>
+						<p>Seguro e Confiável</p>
+						<h1>Carrinho</h1>
 					</div>
 				</div>
 			</div>
@@ -21,44 +21,35 @@
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
+			@include('alerts.personalizado.index')
 				<div class="col-lg-8 col-md-12">
 					<div class="cart-table-wrap">
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
 									<th class="product-remove"></th>
-									<th class="product-image">Product Image</th>
-									<th class="product-name">Name</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
+									<th class="product-image">Imagem do produto</th>
+									<th class="product-name">Nome</th>
+									<th class="product-price">Preço</th>
+									<th class="product-quantity">Quantidade</th>
 									<th class="product-total">Total</th>
 								</tr>
 							</thead>
 							<tbody>
+								@if(session('cart'))
+									@foreach(session('cart') as $id => $details)
 								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
+									<td class="product-remove "><a href="#"><i class="far fa-trash-alt btn btn-danger btn-sm remove-from-cart" title="Eliminar item do carrinho"></i></a></td>
+									<td class="product-image"><img src="/uploads/{{ $details['image'] }}" alt=""></td>
+									<td class="product-name">{{ $details['name'] }}</td>
+									<td class="product-price">{{ $details['price'] }} Kz</td>
+									<td class="product-quantity">
+										<input class="quantity update-cart" type="number" value="{{ $details['quantity'] }}">
+									</td>
+									<td class="product-total">{{ $details['price'] * $details['quantity'] }}kz</td>
 								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+								@endforeach
+								@endif
 							</tbody>
 						</table>
 					</div>
@@ -70,31 +61,36 @@
 							<thead class="total-table-head">
 								<tr class="table-total-row">
 									<th>Total</th>
-									<th>Price</th>
+									<th>Preço</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="total-data">
+								<!-- <tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
 									<td>$500</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
 									<td>$45</td>
-								</tr>
+								</tr> -->
+								@php $total = 0 @endphp
+								@foreach((array) session('cart') as $id => $details)
+							
+										@php $total += $details['price'] * $details['quantity'] @endphp
+								@endforeach
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>{{ $total }}Kz</td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="cart-buttons">
-							<a href="{{route('cart')}}" class="boxed-btn">Update Cart</a>
-							<a href="{{route('checkout')}}" class="boxed-btn black">Check Out</a>
+						<div class="cart-buttons d-flex justify-content-end">
+							<!-- <a href="{{route('cart')}}" class="boxed-btn">Atualizar carrinho</a> -->
+							<a href="{{route('checkout')}}" class="boxed-btn black">Pagamento</a>
 						</div>
 					</div>
 
-					<div class="coupon-section">
+					<!-- <div class="coupon-section">
 						<h3>Apply Coupon</h3>
 						<div class="coupon-form-wrap">
 							<form action="{{('ecommerce.index')}}">
@@ -102,7 +98,7 @@
 								<p><input type="submit" value="Apply"></p>
 							</form>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -110,3 +106,47 @@
 	<!-- end cart -->
 
 	@endsection
+
+	@section('scripts')
+<script type="text/javascript">
+  
+    $(".update-cart").change(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+  
+        $.ajax({
+            url: '{{ route('update.cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents("tr").attr("data-id"), 
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+    });
+		$(".remove-from-cart").click(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+  
+        if(confirm("Tem certeza que pretende eliminar?")) {
+            $.ajax({
+                url: '{{ route('remove.from.cart') }}',
+                method: "DELETE",
+                data: {
+                    _token: '{{ csrf_token() }}', 
+                    id: ele.parents("tr").attr("data-id")
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+  
+</script>
+@endsection

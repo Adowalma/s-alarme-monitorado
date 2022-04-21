@@ -13,8 +13,10 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          @can('isAdmin') 
               <a class="btn btn-primary btn-round text-white pull-right" href="{{route('produto.create')}}" title="Adicionar Produtos">Adicionar</a>
-            <h4 class="card-title">{{__("Produtos")}}</h4>
+            @endcan
+              <h4 class="card-title">{{__("Produtos")}}</h4>
             <div class="col-12 mt-2">
                                         </div>
           </div>
@@ -47,9 +49,21 @@
                   
                   <td>{{$prop->estado}}</td>
                   <td class="text-right">
-                    <a type="button" href="#" rel="tooltip" class="btn btn-primary btn-icon btn-sm " data-original-title="" title="">
-                      <i class="now-ui-icons ui-2_settings-90"></i>
-                    </a>
+                    <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-clone" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <a href="{{ url('') }}" class="dropdown-item" name="aluno">Ver Histórico</a>
+                           
+                          <a href="{{ route('produto.bloquear', $prop->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Produto</a>
+                               
+
+                            <a href="{{route('produto.destroy', $prop->id)}}" class="dropdown-item"
+                                onclick="return confirm('Tens certeza que pretende eliminar?');">Eliminar</a>
+                            
+                        </div>
                   </td>
                   
                  </tr>

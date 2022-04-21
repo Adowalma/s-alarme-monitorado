@@ -15,15 +15,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-	// dd(auth()->user());
-	if(auth()->user()==null){
-		return view('welcome');
-	}else{
-		return view('home');
-	}
+// Route::get('/', function () {
+	
+// 		return view('home');
     
-})->name('home');
+// })->name('home');
+Route::get('/', 'SitePagesController@index')->name('home');
 
 Auth::routes();
 
@@ -61,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     'uses' => 'MapaController@getMapa',
     'as' => 'ver-mapa.ver'
 	]);
+	Route::get('mapaTeste/listar', 'MapaController@testMapa')->name('mapa.teste')->middleware('can:isAdmin');
 	
 	
 	// ************************** Posto  ********************************
@@ -69,8 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	
 	// ************************** Product  ********************************
-	Route::get('produto/listar', 'ProductController@index')->name('produto.index')->middleware('can:isAdmin');
-	Route::resource('produto', 'ProductController', ['except' => ['show','index']])->middleware('can:isAdmin');
+	Route::get('produto/listar', 'ProductController@index')->name('produto.index');
+	Route::get('produto/delete/{id}', 'ProductController@destroy')->name('produto.destroy')->middleware('can:isAdmin');
+	Route::resource('produto', 'ProductController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
+	Route::get('produto/bloquear/{id}', 'ProductController@bloquear')->name('produto.bloquear')->middleware('can:isAdmin');
+
+		// ************************** ProductUser ********************************
+
+	Route::get('produto/user', 'ProductController@userProductCreate')->name('produto.user.create')->middleware('can:isCliente');
+	Route::post('produto/user/create', 'ProductController@userProduct')->name('produto.user.store')->middleware('can:isCliente');
 
 	// ************************** Product Type ********************************
 	Route::get('produtoType/listar', 'ProductTypeController@index')->name('produtoType.index')->middleware('can:isAdmin');
@@ -92,3 +97,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('relatorio/listar', 'RelatorioController@index')->name('relatorio.index');
 	Route::get('relatorio/gerar', 'RelatorioController@gerar')->name('relatorio.gerar');
 });
+
+// ********************* Carrinho ***************************
+// Route::get('/', [ProductController::class, 'index']);  
+// Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}','ProductController@addToCart')->name('add.to.cart');
+Route::patch('update-cart','ProductController@updateCart')->name('update.cart');
+Route::delete('remove-from-cart','ProductController@removeCart')->name('remove.from.cart');

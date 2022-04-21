@@ -21,7 +21,8 @@ class SitePagesController extends Controller
     }
     public function cart()
     {
-        return view('e-commerce.cart');
+        $products = ProductType::latest()->paginate(5);
+        return view('e-commerce.cart',compact('products'));
     }
     public function checkout()
     {

@@ -16,13 +16,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
-      @if ($activePage == 'register' || ($activePage == 'login'))
         <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link">
-            <i class="now-ui-icons design_app"></i> {{ __("Home") }}
+          <a href="{{ route('ecommerce.index') }}" class="nav-link">
+            <i class="now-ui-icons design_app"></i> {{ __("Loja") }}
           </a>
         </li>
-      @endif
         <li class="nav-item @if ($activePage == 'login') active @endif ">
           <a href="{{ route('login') }}" class="nav-link">
             <i class="now-ui-icons users_circle-08"></i> {{ __("Login") }}
