@@ -58,49 +58,4 @@ class FuncionarioController extends Controller
 
           return redirect()->route('funcionario.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Funcionario  $funcionario
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Funcionario $funcionario)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Funcionario  $funcionario
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Funcionario $funcionario)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Funcionario  $funcionario
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Funcionario $funcionario)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Funcionario  $funcionario
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Funcionario $funcionario)
-    {
-        //
-    }
 }

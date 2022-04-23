@@ -135,16 +135,14 @@ class ProductController extends Controller
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
-          foreach($product as $product){
             $cart[$id] = [
-              dd($product->id),
+              // dd($product->id),
                 // "id"=>$product->id,
                 "name" => $product->productType->tipo,
                 "quantity" => 1,
                 "price" => $product->productType->preco,
                 "image" => $product->productType->image
             ];
-          }
         }
           
         session()->put('cart', $cart);
