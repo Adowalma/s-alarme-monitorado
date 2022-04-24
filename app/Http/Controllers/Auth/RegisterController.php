@@ -73,10 +73,5 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         return $user;
-        // $user->save();
-
-        //  return response()->json([
-        //      "message" => "student record created"
-        //  ], 201);
     }
 }

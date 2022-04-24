@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Gate;
+// use App\Http\Controllers\API;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+ //Protected User Routes
+ Route::group(['middleware'=>'auth:sanctum'], function(){
 
-Route::post('users/login', ['as' => 'login', 'uses' => 'AuthAPIController@login']);
+    // **********User CRUD-START****************
+        Route::resource('users', 'API\UserController');
+        Route::get('users/{id}', 'API\UserController@getUser');
+        Route::put('users/bloqued/{id}', 'API\UserController@bloquear');
+    //*************User CRUD-END ************
+    
+    // **********Funcionario CRUD-START****************
+        Route::resource('funcionarios', 'API\FuncionarioController');
+    //*************Funcionario CRUD-END ************
+
+    // ************ Product CRUD-START ****************
+        Route::resource('produtos', 'API\ProductController');
+    //************* Product CRUD-END ************
+    // ************ Product-Type CRUD-START ****************
+        Route::resource('produtosTipo', 'API\ProductTypeController');
+    //************* Product CRUD-END ************
+
+ });
+Route::post('login', ['as' => 'login', 'uses' => 'API\AuthController@login']);
 
 Route::group(['middleware'=>['auth:sanctum']], function(){
-    Route::post('users/logout', ['as' => 'logout', 'uses' => 'AuthAPIController@logout']);
+    Route::post('logout', ['as' => 'logout', 'uses' => 'API\AuthController@logout']);
 });

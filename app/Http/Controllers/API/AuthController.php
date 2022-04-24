@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-class AuthAPIController extends Controller
+class AuthController extends Controller
 {
     //
     public function login( Request $request)
     {
         $token= null;
-       $fields= $request->validate([
+        $request->validate([
 
         'email'=>'required|string',
         'password'=> 'required|string'
@@ -19,10 +19,10 @@ class AuthAPIController extends Controller
        ]);
         // Verificando email
 
-      $user= User::where('email',$fields['email'])->first();
+      $user= User::where('email',$request['email'])->first();
 
         //verificando senha
-        // if(!$user || $user->password != $fields['password'])
+        // if(!$user || $user->password != $request['password'])
         // {
         //     return response ([
         //      'message'=>'Credenciais Incorretas'
@@ -33,14 +33,14 @@ class AuthAPIController extends Controller
        switch ($user->role) 
        {
            case 'admin':
-              $token= $user->createToken($fields['email'], [Gate::allows('isAdmin')])->plainTextToken;
+              $token= $user->createToken($request['email'], [Gate::allows('isAdmin')])->plainTextToken;
                break;
             case'cliente':
-               $token= $user->createToken($fields['email'], [Gate::allows('isCliente')])->plainTextToken;
+               $token= $user->createToken($request['email'], [Gate::allows('isCliente')])->plainTextToken;
                break;
 
             case'funcionario':
-                $token= $user->createToken($fields['email'], [Gate::allows('isFuncionario')])->plainTextToken;
+                $token= $user->createToken($request['email'], [Gate::allows('isFuncionario')])->plainTextToken;
                 break;
            default:
                # code...
