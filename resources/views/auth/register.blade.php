@@ -55,7 +55,7 @@
                       <i class="now-ui-icons users_circle-08" style="background-color:transparent;"></i>
                     </div>
                   </div>
-                  <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nome') }}" type="text" name="name" value="{{ old('name') }}" required style="background-color:transparent;">
+                  <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nome Completo') }}" type="text" name="name" value="{{ old('name') }}" required style="background-color:transparent;">
                   @if ($errors->has('name'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
                       <strong>{{ $errors->first('name') }}</strong>
@@ -74,6 +74,34 @@
                  @if ($errors->has('email'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
                         <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+                <!--Begin input enderco -->
+                <div class="input-group {{ $errors->has('endereco') ? ' has-danger' : '' }}">
+                  <div class="input-group-prepend" style="background-color:transparent;">
+                    <div class="input-group-text" style="background-color:transparent;"> 
+                      <i class="now-ui-icons ui-1_email-85" style="background-color:transparent;"></i>
+                    </div>
+                  </div>
+                  <input class="form-control{{ $errors->has('endereco') ? ' is-invalid' : '' }}" placeholder="{{ __('Endereco') }}" type="text" name="endereco" value="{{ old('endereco') }}" required style="background-color:transparent;">
+                 </div>
+                 @if ($errors->has('endereco'))
+                    <span class="invalid-feedback" style="display: block;" role="alert">
+                        <strong>{{ $errors->first('endereco') }}</strong>
+                    </span>
+                @endif
+                <!--Begin input telemovel -->
+                <div class="input-group {{ $errors->has('telemovel') ? ' has-danger' : '' }}">
+                  <div class="input-group-prepend" style="background-color:transparent;">
+                    <div class="input-group-text" style="background-color:transparent;"> 
+                      <i class="now-ui-icons ui-1_email-85" style="background-color:transparent;"></i>
+                    </div>
+                  </div>
+                  <input class="form-control{{ $errors->has('telemovel') ? ' is-invalid' : '' }}" placeholder="{{ __('Telemovel') }}" min="900000000" max="999999999" type="number" name="telemovel" value="{{ old('telemovel') }}" required style="background-color:transparent;">
+                 </div>
+                 @if ($errors->has('telemovel'))
+                    <span class="invalid-feedback" style="display: block;" role="alert">
+                        <strong>{{ $errors->first('telemovel') }}</strong>
                     </span>
                 @endif
                 

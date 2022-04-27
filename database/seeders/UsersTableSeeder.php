@@ -18,6 +18,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'username' => 'Admin',
             'email' => 'admin@nowui.com',
+            'endereco' => 'Luanda, Rangel, CTT',
+            'telemovel' => '(+244)999999999',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),

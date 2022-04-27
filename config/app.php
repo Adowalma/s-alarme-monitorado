@@ -136,6 +136,7 @@ return [
 
     'providers' => [
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
@@ -191,7 +192,7 @@ return [
     */
 
     'aliases' => [
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
         'App' => Illuminate\Support\Facades\App::class,

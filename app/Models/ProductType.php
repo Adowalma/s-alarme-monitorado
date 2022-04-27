@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Product;
-
+use App\Models\User;
+use App\Models\Checkout;
 
 class ProductType extends Model
 {
@@ -18,12 +19,25 @@ class ProductType extends Model
         'tipo',
         'descricao',
         'image',
-        'preco'
+        'preco',
+        'quantidade'
     ];
 
-    public function product()
+    public function users(){
+        return $this->belongsToMany(
+            User::class,
+            'products_users',
+            'product_id',
+            'user_id'
+        );
+    }
+    public function checkout()
     {
-        return $this->hasmany(Product::class,'type_id','id');
+        return $this->hasmany(
+            Checkout::class,
+            'product_id',
+            'id'
+        );
     }
 
 }

@@ -30,7 +30,6 @@ Auth::routes();
 // ************************E-commerce Pages***************************
 Route::get('/e-commerce', 'SitePagesController@index')->name('ecommerce.index');
 Route::get('/cart', 'SitePagesController@cart')->name('cart');
-Route::get('/checkout', 'SitePagesController@checkout')->name('checkout');
 Route::get('/about', 'SitePagesController@about')->name('about');
 Route::get('/contact', 'SitePagesController@contact')->name('contact');
 Route::get('/news', 'SitePagesController@news')->name('news');
@@ -41,8 +40,18 @@ Route::get('/single-product', 'SitePagesController@singleProduct')->name('single
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+		// ************************** Cart  ********************************
+
+	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+	Route::get('/cart/saved', 'CheckoutController@saveCart')->name('checkout.save');
+	Route::get('/cart/end', 'CheckoutController@awaitConfirm')->name('checkout.await');
+	Route::get('/checkout/aprovar', 'CheckoutController@aprovarList')->name('checkout.approve');
+	Route::get('/checkout/aprovado', 'CheckoutController@aprovadoList')->name('checkout.approved');
+	Route::get('/checkout/end/{id}', 'CheckoutController@pagoMove')->name('checkout.end');
+
 	// ************************** User  ********************************
-	Route::resource('user', 'UserController', ['except' => ['show','destroy']])->middleware('can:isAdmin');
+	Route::resource('user', 'UserController', ['except' => ['show','destroy']]);
 	Route::get('user/delete/{id}', 'UserController@destroy')->name('user.destroy')->middleware('can:isAdmin');
 	Route::get('user/bloquear/{id}', 'UserController@bloquear')->name('user.bloquear')->middleware('can:isAdmin');
 
@@ -58,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     'uses' => 'MapaController@getMapa',
     'as' => 'ver-mapa.ver'
 	]);
-	Route::get('mapaTeste/listar', 'MapaController@testMapa')->name('mapa.teste')->middleware('can:isAdmin');
+	Route::get('mapaTeste/listar', 'MapaController@testMapa')->name('mapa.teste');
 	
 	
 	// ************************** Posto  ********************************
@@ -67,10 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	
 	// ************************** Product  ********************************
-	Route::get('produto/listar', 'ProductController@index')->name('produto.index');
-	Route::get('produto/delete/{id}', 'ProductController@destroy')->name('produto.destroy')->middleware('can:isAdmin');
-	Route::resource('produto', 'ProductController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
-	Route::get('produto/bloquear/{id}', 'ProductController@bloquear')->name('produto.bloquear')->middleware('can:isAdmin');
+	Route::get('produto/listar', 'ProductTypeController@index')->name('produto.index');
+	Route::get('produto/delete/{id}', 'ProductTypeController@destroy')->name('produto.destroy')->middleware('can:isAdmin');
+	Route::resource('produto', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
+	Route::get('produto/bloquear/{id}', 'ProductTypeController@bloquear')->name('produto.bloquear')->middleware('can:isAdmin');
 
 		// ************************** ProductUser ********************************
 
@@ -93,14 +102,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('cliente', 'ClienteController', ['except' => ['show','index']])->middleware('can:isAdmin');
 
 	// ************************** PDF *****************************
-	Route::get('relatorio/pdf', 'RelatorioController@exibirPDF')->name('relatorio.pdf');
-	Route::get('relatorio/listar', 'RelatorioController@index')->name('relatorio.index');
-	Route::get('relatorio/gerar', 'RelatorioController@gerar')->name('relatorio.gerar');
+	 Route::get('relatorio/venda', 'RelatorioController@index')->name('relatorio.venda');
+	// Route::get('relatorio/pdf', 'RelatorioController@exibirPDF')->name('relatorio.pdf');
+	// Route::get('relatorio/listar', 'RelatorioController@index')->name('relatorio.index');
+	// Route::get('relatorio/gerar', 'RelatorioController@gerar')->name('relatorio.gerar');
 });
 
 // ********************* Carrinho ***************************
 // Route::get('/', [ProductController::class, 'index']);  
 // Route::get('cart', [ProductController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}','ProductController@addToCart')->name('add.to.cart');
-Route::patch('update-cart','ProductController@updateCart')->name('update.cart');
-Route::delete('remove-from-cart','ProductController@removeCart')->name('remove.from.cart');
+Route::get('add-to-cart/{id}','CartController@addToCart')->name('add.to.cart');
+Route::patch('update-cart','CartController@updateCart')->name('update.cart');
+Route::delete('remove-from-cart','CartController@removeCart')->name('remove.from.cart');

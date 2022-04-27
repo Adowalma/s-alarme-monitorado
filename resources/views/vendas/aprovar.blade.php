@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
     'namePage' => 'Lista de Produtos',
-    'activePage' => 'produtos_listar',
+    'activePage' => 'aprovar_venda',
     'activeNav' => '',
 ])
 
@@ -14,10 +14,7 @@
         <div class="card">
           <div class="card-header">
             @include('alerts.personalizado.index')
-          @can('isAdmin') 
-              <a class="btn btn-primary btn-round text-white pull-right" href="{{route('produto.create')}}" title="Adicionar Produtos">Adicionar</a>
-            @endcan
-              <h4 class="card-title">{{__("Produtos")}}</h4>
+              <h4 class="card-title">{{__("Aprovar Venda")}}</h4>
             <div class="col-12 mt-2">
             </div>
           </div>
@@ -30,10 +27,11 @@
                 <tr>
                   <th>Image</th>
                   <th>Nome</th>
-                  <th>Descricao</th>
+                  <th>Comprador</th>
+                  <th>Endereço de entrega</th>
                   <th>Preco</th>
-                  <th>Stock</th>
-                  <!-- <th>Propietário</th> -->
+                  <th>Quantidade</th>
+                  <th>Total</th>
                   <!-- <th>Estado</th> -->
                   <th class="disabled-sorting text-right">Acções</th>
                 </tr>
@@ -48,12 +46,13 @@
                   <td>
                     {{$prop->tipo}}
                   </td>
-                  <td>{{$prop->descricao}}</td>
-                  <td>{{$prop->preco}}</td>
+                  <td>{{$prop->name}}</td>
+                  <td>{{$prop->endereco}}</td>
+                  <td>{{$prop->preco}}kz</td>
                   <!-- <td>@if ($prop->user_id==null) Sem Propietário @else {{$prop->name}} @endif</td> -->
                   
-                  <td>{{$prop->quantidade}}</td>
-                  <!-- <td>{{$prop->estado}}</td> -->
+                  <td>{{$prop->quantity}}</td>
+                  <td>{{$prop->quantity*$prop->preco}}kz</td>
                   <td class="text-right">
                     <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -61,10 +60,8 @@
                                 <i class="fa fa-clone" aria-hidden="true"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           <a href="{{ url('') }}" class="dropdown-item" name="aluno">Editar</a>
-                           
-                          <a href="{{ route('produto.bloquear', $prop->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Produto</a>
-                               
+                           <a href="{{ route('checkout.end', $prop->id) }}" class="dropdown-item" name="aluno">Mover para Pagos</a>
+                                                          
 
                             <a href="{{route('produto.destroy', $prop->id)}}" class="dropdown-item"
                                 onclick="return confirm('Tens certeza que pretende eliminar?');">Eliminar</a>

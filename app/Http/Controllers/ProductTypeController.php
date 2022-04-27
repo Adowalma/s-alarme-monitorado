@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductType;
+use Illuminate\Support\Facades\Gate;
 
 
 class ProductTypeController extends Controller
@@ -15,9 +16,13 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $products= ProductType::all();
-    
-        return view('produtos.productType.index', compact('products'));
+        if (Gate::allows('isAdmin')||Gate::allows('isFuncionario')) {
+            // $products= ProductType::leftJoin('products_users','products_users.product_id','=','product_types.id')
+            //             ->join('users','products_users.user_id','=','users.id')
+            //             ->select('product_types.*','users.name');
+            $products=ProductType::all();
+            return view('produtos.index', compact('products'));
+        }
     }
 
     /**
@@ -28,6 +33,9 @@ class ProductTypeController extends Controller
     public function create()
     {
         //
+        $types = ProductType::orderBy('tipo','asc')->get();
+        return view('produtos.create', compact('types'));
+    
     }
 
     /**
@@ -44,10 +52,11 @@ class ProductTypeController extends Controller
               'tipo'=>['required','string','min:5'],
               'descricao'=>['required'],
               'image' => 'image|mimes:jpeg,png,jpg,svg',
-              'preco'=>['required']
+              'preco'=>['required'],
+              'quantidade'=>['required']
             ]
           );
-      
+          $request['descricao']=nl2br($request['descricao']);
           $input = $request->all();
       
           if ($image = $request->file('image')) {
@@ -59,7 +68,7 @@ class ProductTypeController extends Controller
       
           ProductType::create($input);
       
-          return redirect()->route('produto.create');
+          return redirect()->route('produto.index')->with('success','Produto adicionado com Sucesso');
     }
 
     /**
@@ -111,7 +120,7 @@ class ProductTypeController extends Controller
             unset($input['image']);
         }
         $post->update($input);
-        return redirect()->route('produtos.productType.index')->with('success','Product Type updated successfully');    
+        return redirect()->route('produtos.index')->with('success','Produto atualizado com sucesso!');    
     }
 
     /**
@@ -123,6 +132,12 @@ class ProductTypeController extends Controller
     public function destroy($id)
     {
         ProductType::find($id)->delete();
-        return redirect()->route('produtoType.index');
+        return redirect()->route('produto.index')       
+                ->with('success','Produto apagado com sucesso!');
+    }
+    public function bloquear( $id )
+    {
+        ProductType::find($id )->update( ['estado'=>'Desativado'] );
+           return redirect()->back();
     }
 }

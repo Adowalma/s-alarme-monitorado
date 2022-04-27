@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEstadoColumnToUsersTable extends Migration
+class CreateCarroLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddEstadoColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->enum('estado',['Ativo','Desativado']);
+        Schema::create('carro_location', function (Blueprint $table) {
+            $table->id();
+            $table->string('lat');
+            $table->string('lng');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddEstadoColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('carro_location');
     }
 }

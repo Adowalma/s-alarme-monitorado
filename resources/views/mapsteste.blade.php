@@ -9,14 +9,22 @@
   </div>
   <div class="content">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="card ">
           <div class="card-header ">
-            Achando o Ponto mais Proximo
+            Achando o Posto mais Proximo
           </div>
           <div class="card-body ">
               <div id="map-canvas" style="width: 100%; height: 500px;"></div>
           </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <iframe width="100%" height="550"
+            src="http://192.168.43.155/">
+          </iframe>
+
         </div>
       </div>
     </div>

@@ -40,22 +40,6 @@
         <strong>{{ $errors->first('email') }}</strong>
     </span>
 @endif
-<!--Begin input user type-->
-
-<!--Begin input password -->
-<!-- <div class="input-group {{ $errors->has('password') ? ' has-danger' : '' }}">
-  <div class="input-group-prepend">
-    <div class="input-group-text">
-      <i class="now-ui-icons objects_key-25"></i>
-    </div>
-  </div>
-  <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Palavra-passe') }}" type="password" name="password" required>
-  @if ($errors->has('password'))
-    <span class="invalid-feedback" style="display: block;" role="alert">
-      <strong>{{ $errors->first('password') }}</strong>
-    </span>
-  @endif
-</div> -->
 <!-- input telemovel -->
 <div class="input-group">
   <div class="input-group-prepend">
@@ -63,5 +47,14 @@
       <i class="now-ui-icons tech_mobile"></i></i>
     </div>
   </div>
-  <input class="form-control" placeholder="{{ __('telefone') }}" type="number" name="" required>
+  <input class="form-control" placeholder="{{ __('Telefone') }}" type="number" name="telemovel" min="900000000" max="999999999" required>
+</div>
+<!-- input telemovel -->
+<div class="input-group">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <i class="now-ui-icons tech_mobile"></i></i>
+    </div>
+  </div>
+  <input class="form-control" placeholder="{{ __('Endereço') }}" type="text" name="endereco" required>
 </div>

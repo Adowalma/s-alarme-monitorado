@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace App\Charts;
 use Illuminate\Support\Facades\DB;
-use App\Models\Product;
+use App\Models\ProductType;
+use App\Models\Checkout;
+use App\Models\User;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
@@ -21,23 +23,27 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        // $products = DB::table('products')->get();
-        $products = DB::table('products')
-            ->join('product_types', 'products.type_id', '=', 'product_types.id')
-            -> select('product_types.*')
-            ->groupBy('product_types.tipo')
-            ->get();
+        $products = DB::table('checkout')
+                    ->select('checkout.estado')
+                     ->groupBy('checkout.estado')
+                     ->get();
+        // $products = DB::table('products')
+        //     ->join('product_types', 'products.type_id', '=', 'product_types.id')
+        //     -> select('product_types.*')
+         
         $labels = [];
         $count = [];
+        // foreach($products as $products)
+        //     dd(date('M', strtotime($products->created_at)));
         foreach ($products as $product){
-            array_push($labels,$product->tipo);
+            array_push($labels,$product->estado);
         }
-        $values = Product::with('users' )->get();
+        $values = User::with('checkout' )->get();
         foreach ($values as $item) {
-            array_push($count,$item->users->count());
+            array_push($count,$item->checkout->count());
         }
         return Chartisan::build()
             ->labels($labels)
-            ->dataset('Sample', $count);
+            ->dataset(" ", $count);
     }
 }

@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-md-6 pr-3">
                         <div class="form-group">
-                            <label>{{__(" Name")}}</label>
+                            <label>{{__(" Nome")}}</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                         </div>
@@ -41,8 +41,22 @@
                 
                   <div class="col-md-6 pr-3">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">{{__(" Email address")}}</label>
+                      <label for="exampleInputEmail1">{{__(" Email ")}}</label>
                       <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', auth()->user()->email) }}">
+                      @include('alerts.feedback', ['field' => 'email'])
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">{{__(" Endereco ")}}</label>
+                      <input type="text" name="endereco" class="form-control" placeholder="Endereco" value="{{ old('endereco', auth()->user()->endereco) }}">
+                      @include('alerts.feedback', ['field' => 'email'])
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">{{__(" Telemóvel ")}}</label>
+                      <input type="number" name="text" class="form-control" placeholder="Telemóvel" value="{{ old('telemovel', auth()->user()->telemovel) }}">
                       @include('alerts.feedback', ['field' => 'email'])
                     </div>
                   </div>

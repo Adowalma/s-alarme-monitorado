@@ -47,11 +47,16 @@ class FuncionarioController extends Controller
             'name' => ['required', 'string', 'min:9','max:150'],
             'username' => ['required', 'string','max:20','unique:users'],
             'email' => ['required', 'string', 'email', 'max:150', 'unique:users'],
+            'telemovel' => ['required', 'integer'],
+            'endereco' => ['required', 'string', 'min:8'],
+
         ]);
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
+            'telemovel' => $request->telemovel,
+            'endereco' => $request->endereco,
             'password' => Hash::make('password'),
           ]);
           User::where('username',$request->username )->update( ['role'=>'funcionario'] );

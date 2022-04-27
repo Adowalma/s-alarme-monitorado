@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
 
         $this->call([ UsersTableSeeder::class]);
+        $this->call([ProductTypesSeeder::class]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }

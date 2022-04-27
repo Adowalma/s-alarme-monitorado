@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
     'namePage' => 'Lista de Produtos',
-    'activePage' => 'produtos_listar',
+    'activePage' => 'vendidos',
     'activeNav' => '',
 ])
 
@@ -14,10 +14,7 @@
         <div class="card">
           <div class="card-header">
             @include('alerts.personalizado.index')
-          @can('isAdmin') 
-              <a class="btn btn-primary btn-round text-white pull-right" href="{{route('produto.create')}}" title="Adicionar Produtos">Adicionar</a>
-            @endcan
-              <h4 class="card-title">{{__("Produtos")}}</h4>
+              <h4 class="card-title">{{__("Vendidos")}}</h4>
             <div class="col-12 mt-2">
             </div>
           </div>
@@ -30,12 +27,12 @@
                 <tr>
                   <th>Image</th>
                   <th>Nome</th>
-                  <th>Descricao</th>
+                  <th>Proprietario</th>
                   <th>Preco</th>
-                  <th>Stock</th>
-                  <!-- <th>Propietário</th> -->
+                  <th>Quantidade</th>
+                  <th>Total</th>
                   <!-- <th>Estado</th> -->
-                  <th class="disabled-sorting text-right">Acções</th>
+                  <!-- <th class="disabled-sorting text-right">Acções</th> -->
                 </tr>
               </thead>
               <tfoot>
@@ -48,13 +45,13 @@
                   <td>
                     {{$prop->tipo}}
                   </td>
-                  <td>{{$prop->descricao}}</td>
-                  <td>{{$prop->preco}}</td>
+                  <td>{{$prop->name}}</td>
+                  <td>{{$prop->preco}}kz</td>
                   <!-- <td>@if ($prop->user_id==null) Sem Propietário @else {{$prop->name}} @endif</td> -->
                   
-                  <td>{{$prop->quantidade}}</td>
-                  <!-- <td>{{$prop->estado}}</td> -->
-                  <td class="text-right">
+                  <td>{{$prop->quantity}}</td>
+                  <td>{{$prop->quantity*$prop->preco}}kz</td>
+                  <!-- <td class="text-right">
                     <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +67,7 @@
                                 onclick="return confirm('Tens certeza que pretende eliminar?');">Eliminar</a>
                             
                         </div>
-                  </td>
+                  </td> -->
                   
                  </tr>
                  @endforeach

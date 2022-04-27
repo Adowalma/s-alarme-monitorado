@@ -20,8 +20,12 @@ class CreateCheckoutTable extends Migration
             $table->foreign('cliente_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('product_id')->unsigned()->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('product_types')->onDelete('cascade');
 
+            $table->integer('quantity');
+            $table->enum('estado',['Por aprovar', 'Pago'])->default('Por aprovar');
+
+            $table->string('referencia',12)->nullable();
             $table->softDeletes('deleted_at');
             $table->timestamps();
         });

@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Models;
-use App\Models\Product;
+use App\Models\ProductType;
 use App\Models\Urgency;
+use App\Models\Checkout;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,7 +25,9 @@ class User extends Authenticatable
         'name','username',
         'email',
         'password',
-        'estado'
+        'estado',
+        'telemovel',
+        'endereco'
     ];
 
     /**
@@ -50,7 +51,7 @@ class User extends Authenticatable
 
     public function products(){
         return $this->belongsToMany(
-            Product::class,
+            ProductType::class,
             'products_users',
             'user_id',
             'product_id'
@@ -62,6 +63,14 @@ class User extends Authenticatable
             'uegencies_users',
             'user_id',
             'urgency_id'
+        );
+    }
+    public function checkout()
+    {
+        return $this->hasmany(
+            Checkout::class,
+            'cliente_id',
+            'id'
         );
     }
 }

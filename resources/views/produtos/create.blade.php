@@ -31,7 +31,6 @@
 
           </div>
           <!-- end content-->
-          @include('modals.ProductType')
         </div>
         <!--  end card  -->
       </div>

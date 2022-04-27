@@ -19,6 +19,8 @@ class CreateProductTypesTable extends Migration
             $table->text('descricao')->nullable();
             $table->float('preco',10,2);
             $table->string('image');
+            $table->integer('quantidade');
+            $table->enum('estado',['Ativo','Desativado']);
             $table->softDeletes('deleted_at');
             $table->timestamps();
         });

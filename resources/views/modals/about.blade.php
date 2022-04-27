@@ -12,10 +12,10 @@
         <div class="row">
           <div class="col"> <img src="/uploads/{{ $product->image }}"></div>
           <div class="col">
-            <h3 class="">{{ $product->tipo }}</h3>
-            <h3 class="">{{ $product->preco }} kz </h3>
-            Especificações:
-              <h3>{{ $product->descricao }}</h3> 
+            <p>{{ $product->tipo }}</p>
+            <p>{{ $product->preco }} kz</p>
+            <h6>Especificações:</h6>
+              <p>{{ $product->descricao }}</p> 
               </div>
         </div>
       </div>

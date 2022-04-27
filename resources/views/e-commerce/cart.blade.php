@@ -20,8 +20,9 @@
 	<!-- cart -->
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
+		@include('alerts.personalizado.index')
+
 			<div class="row">
-			@include('alerts.personalizado.index')
 				<div class="col-lg-8 col-md-12">
 					<div class="cart-table-wrap">
 						<table class="cart-table">
@@ -38,7 +39,7 @@
 							<tbody>
 								@if(session('cart'))
 									@foreach(session('cart') as $id => $details)
-								<tr class="table-body-row">
+								<tr class="table-body-row" data-id="{{ $id }}">
 									<td class="product-remove "><a href="#"><i class="far fa-trash-alt btn btn-danger btn-sm remove-from-cart" title="Eliminar item do carrinho"></i></a></td>
 									<td class="product-image"><img src="/uploads/{{ $details['image'] }}" alt=""></td>
 									<td class="product-name">{{ $details['name'] }}</td>
@@ -85,20 +86,9 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons d-flex justify-content-end">
-							<!-- <a href="{{route('cart')}}" class="boxed-btn">Atualizar carrinho</a> -->
 							<a href="{{route('checkout')}}" class="boxed-btn black">Pagamento</a>
 						</div>
 					</div>
-
-					<!-- <div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
-							<form action="{{('ecommerce.index')}}">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
-						</div>
-					</div> -->
 				</div>
 			</div>
 		</div>
@@ -108,45 +98,45 @@
 	@endsection
 
 	@section('scripts')
-<script type="text/javascript">
+	<script type="text/javascript">
   
     $(".update-cart").change(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        $.ajax({
-            url: '{{ route('update.cart') }}',
-            method: "patch",
-            data: {
-                _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("data-id"), 
-                quantity: ele.parents("tr").find(".quantity").val()
-            },
-            success: function (response) {
-               window.location.reload();
-            }
-        });
+			e.preventDefault();
+
+			var ele = $(this);
+
+			$.ajax({
+				url: '{{ route('update.cart') }}',
+				method: "patch",
+				data: {
+						_token: '{{ csrf_token() }}', 
+						id: ele.parents("tr").attr("data-id"), 
+						quantity: ele.parents("tr").find(".quantity").val()
+				},
+				success: function (response) {
+						window.location.reload();
+				}
+			});
     });
 		$(".remove-from-cart").click(function (e) {
-        e.preventDefault();
+      e.preventDefault();
   
-        var ele = $(this);
-  
-        if(confirm("Tem certeza que pretende eliminar?")) {
-            $.ajax({
-                url: '{{ route('remove.from.cart') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
+			var ele = $(this);
+
+			if(confirm("Tem certeza que pretende eliminar?")) {
+				$.ajax({
+					url: '{{ route('remove.from.cart') }}',
+					method: "DELETE",
+					data: {
+							_token: '{{ csrf_token() }}', 
+							id: ele.parents("tr").attr("data-id")
+					},
+					success: function (response) {
+							window.location.reload();
+					}
+				});
+			}
     });
   
-</script>
+	</script>
 @endsection

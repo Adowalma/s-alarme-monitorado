@@ -3,7 +3,7 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="{{ route('home') }}" class="simple-text logo-mini">
+    <a href="{{ route('dashboard') }}" class="simple-text logo-mini">
       <div class="logo-container">
         <img src="{{ asset('assets/img/Sam/3x/Ativo 2.svg') }}" alt="">
       </div>
@@ -15,7 +15,6 @@
   <div class="sidebar-wrapper" id="sidebar-wrapper">
    
    <ul class="nav">
-   @can('isAdmin') 
       <li>
         
         <a data-toggle="collapse" href="#laravelExamples">
@@ -32,17 +31,11 @@
             <li class="@if ($activePage == 'users') active @endif">
               <a href="{{ route('user.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("Listar Todos Usuários") }} </p>
+                <p> {{ __("Listar Usuários") }} </p>
               </a>
             </li>
-            <li class="@if ($activePage == 'clientes') active @endif">
-              <a href="{{ route('cliente.index') }}">
-                <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("Listar Clientes") }} </p>
-              </a>
-            </li>
+            @can('isAdmin') 
 
-            
             <li class="@if ($activePage == 'funcionarios') active @endif">
               <a href="{{ route('funcionario.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
@@ -50,15 +43,6 @@
               </a>
             </li>
 
-                        
-            <li class="@if ($activePage == 'funcionarios') active @endif">
-              <a href="{{ route('funcionario.index') }}">
-                <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("Listar Funcionários") }} </p>
-              </a>
-            </li>
-
-            
             <!-- <li class="@if ($activePage == 'postos') active @endif">
               <a href="{{ url('posto/listar') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
@@ -71,6 +55,8 @@
                 <p> {{ __("Cadastrar Postos") }} </p>
               </a>
             </li> 
+            @endcan
+
           </ul>
       
         </div>
@@ -88,7 +74,6 @@
           <p>{{ __('Find Nearest') }}</p>
         </a>
       </li>
-      @endcan
       <li>
         
         <a data-toggle="collapse" href="#prodCollapse">
@@ -109,14 +94,14 @@
               </a>
             </li>
             
-            @can('isCliente')
+            <!-- @can('isCliente')
             <li class="@if ($activePage == 'produto_user') active @endif">
               <a href="{{ route('produto.user.create') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("Inserir Produto") }} </p>
               </a>
             </li>
-            @endcan
+            @endcan -->
             
               @can('isAdmin') 
             <li class="@if ($activePage == 'produtos_create') active @endif">
@@ -125,7 +110,7 @@
                 <p> {{ __("Cadastrar Produtos") }} </p>
               </a>
             </li>
-            <li class="@if ($activePage == 'produtos_create') active @endif">
+            <li class="@if ($activePage == 'produtos_listar') active @endif">
               <a href="{{ route('produtoType.index') }}">
                 <i class="now-ui-icons business_bank"></i>
                 <p> {{ __("Listar tipo de Produtos") }} </p>
@@ -136,6 +121,35 @@
       
         </div>
       </li>
+      <li>
+        <a data-toggle="collapse" href="#VendCollapse">
+          <!-- <i class="fab fa-laravel"></i> -->
+            <i class="now-ui-icons users_single-02"></i> 
+
+        <p>
+          {{ __("Vendas") }}
+          <b class="caret"></b>
+        </p>
+        </a>
+        <div class="collapse " id="VendCollapse">
+          <ul class="nav">
+          <li class = " @if ($activePage == 'aprovar_venda') active @endif">
+            <a href="{{ route('checkout.approve') }}">
+              <i class="now-ui-icons ui-1_bell-53"></i>
+              <p>{{ __('Pagamento Pendente') }} <span class="badge badge-pill badge-danger">4</span></p>
+            </a>
+          </li>
+            <li class="@if ($activePage == 'vendidos') active @endif">
+              <a href="{{ route('checkout.approved') }}">
+                <i class="now-ui-icons business_bank"></i>
+                <p> {{ __("Pagos") }} </p>
+              </a>
+            </li>
+          </ul>
+      
+        </div>
+      </li>
+      
       <li class = " @if ($activePage == 'notifications') active @endif">
         <a href="{{ route('page.index','notifications') }}">
           <i class="now-ui-icons ui-1_bell-53"></i>
@@ -156,13 +170,13 @@
         <div class="collapse " id="relCollapse">
           <ul class="nav">
             <li class="@if ($activePage == 'relatorio') active @endif">
-              <a href="{{ route('relatorio.gerar') }}">
+              <a href="{{ route('relatorio.venda') }}">
                 <i class="now-ui-icons files_single-copy-04"></i>
                 <p> {{ __("Relatório de Venda") }} </p>
               </a>
             </li>
             <li class="@if ($activePage == 'relatorio') active @endif">
-              <a href="{{ route('relatorio.gerar') }}">
+              <a href="{{ url('#') }}">
                 <i class="now-ui-icons files_single-copy-04"></i>
                 <p> {{ __("Relatórios das Urgências") }} </p>
               </a>

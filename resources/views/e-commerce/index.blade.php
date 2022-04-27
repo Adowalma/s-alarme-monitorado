@@ -15,7 +15,7 @@
               <h3 class="text-white">{{ __('O Sistema de alarme ideal pra você ') }}</h3>
 
 							<div class="hero-btns">
-								<a href="{{route('shop')}}" class="boxed-btn">Produtos</a>
+								<a href="#Product" class="boxed-btn">Produtos</a>
 								<a href="{{route('contact')}}" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
@@ -37,7 +37,7 @@
               <h3 class="text-white">{{ __('O Sistema de alarme ideal pra você ') }}</h3>
 
 							<div class="hero-btns">
-								<a href="{{route('shop')}}" class="boxed-btn">Produtos</a>
+								<a href="#Product" class="boxed-btn">Produtos</a>
 								<a href="{{route('contact')}}" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
@@ -60,7 +60,7 @@
 
 							<div class="hero-btns">
 								<a href="{{route('shop')}}" class="boxed-btn">Produtos</a>
-								<a href="{{route('contact')}}" class="bordered-btn">Contacte-nos</a>
+								<a href="#Product" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
 						</div>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="content">
 							<h3>Botão SOS</h3>
-							<p>Você aciona o botão SOS, nós enviamos ajuda rapidamente de acordo com a ocorrência: polícia, bombeiros e ambulância</p>
+							<p>Você aciona o botão SOS, nós enviamos ajuda rapidamente a polícia</p>
 						</div>
 					</div>
 				</div>
@@ -116,12 +116,12 @@
 	<!-- end features list section -->
 
 	<!-- product section -->
-	<div class="product-section mt-150 mb-150">
+	<div id="Product" class="product-section mt-150 mb-150">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Nossos</span> Produtos</h3>
+						<h3 ><span class="orange-text">Nossos</span> Produtos</h3>
 						<p> Os dispositivos da SAM possuem a mais avançada e inovadora tecnologia do mercado que permite proteção 24 horas e conectividade total com a nossa Central de Monitoramento de Alarmes SAM.</p>
 					</div>
 				</div>

@@ -34,6 +34,6 @@ class OutroChart extends BaseChart
         }
         return Chartisan::build()
             ->labels($labels)
-            ->dataset('Sample', $count);
+            ->dataset(' ', $count);
     }
 }

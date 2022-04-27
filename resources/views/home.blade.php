@@ -15,17 +15,7 @@
         <div class="card card-chart no-border input-group">
           <div class="card-header ">
             <h5 class="card-category">Alcance Global</h5>
-            <h4 class="card-title">Venda dos dispositivos</h4>
-            <!-- <div class="dropdown">
-              <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                <i class="now-ui-icons loader_gear"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Ações</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item text-danger" href="#">Remover Dados</a>
-              </div>
-            </div> -->
+            <h4 class="card-title">Estado das Vendas dos dispositivos</h4>
           </div>
           <div class="card-body">
             <div class="chart-area">
@@ -34,7 +24,6 @@
               <!-- Chart's container -->
             <div id="chart" style="height: 290px;"></div>
             <!-- Charting library -->
-            asset('assets') }}/css/bootstrap.min.css
             <script src="{{asset('assets')}}/js/echarts/echarts.min.js"></script>
             <!-- Chartisan -->
             <script src="{{asset('assets')}}/js/echarts/chartisan_echarts.js"></script>
@@ -48,7 +37,7 @@
                     .colors(['#4299E1','#FE0045','#C07EF1','#67C560','#ECC94B'])
                         .datasets('bar')
                         .legend()
-                        // .colors('blue')
+                        // .colors(['orange','grey'])
                         .tooltip()
                         .axis(true)
                 });
@@ -128,7 +117,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12">
         <div class="card  card-tasks">
           <div class="card-header ">
@@ -209,7 +198,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 @endsection
 

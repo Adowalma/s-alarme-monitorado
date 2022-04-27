@@ -78,11 +78,11 @@
 									</ul>
 								</li>
 								<li><a href="{{route('contact')}}">Contactos</a></li>
-								<li><a href="{{route('shop')}}">Compras</a>
+								<li><a href="{{route('cart')}}">Compras</a>
 									<ul class="sub-menu">
-										<li><a href="{{route('shop')}}">Compras</a></li>
+										<!-- <li><a href="{{route('shop')}}">Compras</a></li> -->
 										<li><a href="{{route('checkout')}}">Pagamento</a></li>
-										<li><a href="{{route('singleProduct')}}">Single Product</a></li>
+										<!-- <li><a href="{{route('singleProduct')}}">Single Product</a></li> -->
 										<li><a href="{{route('cart')}}">Carrinho</a></li>
 									</ul>
 								</li>
@@ -91,7 +91,7 @@
 										<a class="shopping-cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
 											<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background-color:#F28123;">{{ count((array) session('cart')) }}</span>
 										</a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
 										@if(Auth::check())
 										<a href="{{ route('dashboard') }}" class="nav-link">{{ __("Entrar") }}</a>
 										@else
