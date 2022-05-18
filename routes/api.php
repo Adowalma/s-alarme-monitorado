@@ -25,18 +25,24 @@ use Illuminate\Support\Facades\Gate;
         Route::put('users/bloqued/{id}', 'API\UserController@bloquear');
     //*************User CRUD-END ************
     
-    // **********Funcionario CRUD-START****************
+    // ********** Funcionario CRUD-START****************
         Route::resource('funcionarios', 'API\FuncionarioController');
     //*************Funcionario CRUD-END ************
 
     // ************ Product CRUD-START ****************
         Route::resource('produtos', 'API\ProductController');
     //************* Product CRUD-END ************
+
     // ************ Product-Type CRUD-START ****************
         Route::resource('produtosTipo', 'API\ProductTypeController');
     //************* Product CRUD-END ************
+    
 
  });
+
+ // ************ Product-Type CRUD-START ****************
+ Route::resource('gps', 'API\GPSRTController');
+ //************* Product CRUD-END ************
 Route::post('login', ['as' => 'login', 'uses' => 'API\AuthController@login']);
 
 Route::group(['middleware'=>['auth:sanctum']], function(){

@@ -83,3 +83,16 @@
     <!-- end row -->
   </div>
   @endsection
+
+@push('js')
+<script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                columnDefs: [{
+                    orderable: false,
+                    targets: -1
+                }] 
+            });
+        });
+</script>
+@endpush

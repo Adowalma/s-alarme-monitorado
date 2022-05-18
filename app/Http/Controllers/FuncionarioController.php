@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+
 
 class FuncionarioController extends Controller
 {
@@ -59,8 +61,12 @@ class FuncionarioController extends Controller
             'endereco' => $request->endereco,
             'password' => Hash::make('password'),
           ]);
+          if (Gate::allows('isAdmin')) {
           User::where('username',$request->username )->update( ['role'=>'funcionario'] );
+        }else if(Gate::allows('isAdmin_venda')){
+            User::where('username',$request->username )->update( ['role'=>'funcionario_venda'] );
+        }
 
-          return redirect()->route('funcionario.index');
+          return redirect()->back()->with('success', 'Funcionário adicionado com sucesso');;
     }
 }

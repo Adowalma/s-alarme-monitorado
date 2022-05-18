@@ -17,6 +17,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          @include('alerts.personalizado.index')
               <a class="btn btn-primary btn-round text-white pull-right" href="#">Add posto</a>
             <h4 class="card-title">{{__("Postos de Emergêrncia")}}</h4>
             <div class="col-12 mt-2">

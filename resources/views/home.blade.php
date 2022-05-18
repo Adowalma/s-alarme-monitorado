@@ -84,7 +84,7 @@
         <div class="card card-chart">
           <div class="card-header">
             <h5 class="card-category"> Estátisticas de requisições</h5>
-            <h4 class="card-title">Últimas 24 horas</h4>
+            <h4 class="card-title">Estado das Requisições</h4>
           </div>
           <div class="card-body">
             <div class="chart-area">

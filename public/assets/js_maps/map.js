@@ -5,16 +5,16 @@ var infowindow = new google.maps.InfoWindow({
     content: ''
 });
 var locations = [
-    ['5ª Esquadra', -8.8362255, 13.2318311, 1],
-    ['Policia Nacional - Divisao de Viana', -8.9044654, 13.3729221, 2],
-    ['Esquadra do Belas', 	-8.9299454, 13.26300293, 3],
-    ['13ª Esquadra',  -8.8114573, 13.2836723, 4]
+    ['5ª Esquadra, tel:113', -8.8362255, 13.2318311, 1],
+    ['Policia Nacional - Divisao de Viana, tel:123', -8.9044654, 13.3729221, 2],
+    ['Esquadra do Belas, tel:144', 	-8.9299454, 13.26300293, 3],
+    ['13ª Esquadra, tel:155',  -8.8114573, 13.2836723, 4]
 ];
 
 function initialize() {
-    var haightAshbury = new google.maps.LatLng(-8.838333, 13.234444);
+    var haightAshbury = new google.maps.LatLng(-8.8188885,13.2648876);
     var mapOptions = {
-        zoom: 12,
+        zoom: 16,
         center: haightAshbury,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     };
@@ -33,7 +33,9 @@ function initialize() {
         marker = new google.maps.Marker({
             title: locations[i][0],
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            map: map
+            map: map,
+            icon:"http://maps.google.com/mapfiles/kml/paddle/P.png",
+            
         });
         markers.push(marker);
 
@@ -50,15 +52,31 @@ function addMarker(location) {
     var marker = new google.maps.Marker({
         title: 'User added marker',
         // Just to differ from default markers
-        icon: {
-            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-            scale: 5
-        },
+         icon: {
+             path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+             scale: 5
+         },
         position: location,
-        map: map
+        map: map,
+       
     });
     // You can not add it to markers array. Otherwise added marker will be always the closest to itself
     //markers.push(marker); 
+
+    /// marker circle around the map(on alert marker)
+    var radius = 1000
+    var position = marker.getPosition();
+
+    var circle = new google.maps.Circle({
+      center: position,
+      radius: radius,
+      fillColor: "red",
+      fillOpacity: 0.1,
+      map: map,
+      strokeColor: "#FFFFFF",
+      strokeOpacity: 0.1,
+      strokeWeight: 2
+    });
 }
 
 function find_closest_marker(event) {

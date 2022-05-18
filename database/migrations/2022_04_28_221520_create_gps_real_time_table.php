@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleColumnToUsersTable extends Migration
+class CreateGpsRealTimeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->enum('role',  ['cliente','admin','funcionario','admin_venda', 'funcionario_venda'])->default('cliente');
+        Schema::create('gps_real_time', function (Blueprint $table) {
+            $table->id();
+            $table->string('lat');
+            $table->string('lng');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('gps_real_time');
     }
 }

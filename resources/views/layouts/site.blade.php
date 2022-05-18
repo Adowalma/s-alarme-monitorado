@@ -69,14 +69,14 @@
 									</ul> -->
 								</li>
 								<li><a href="{{route('about')}}">Sobre</a></li>
-								<li><a href="{{route('news')}}">Ajuda e Informações</a>
+								<!-- <li><a href="{{route('news')}}">Ajuda e Informações</a>
 									<ul class="sub-menu">
-										<!-- <li><a href="{{route('news')}}">News</a></li> -->
+										<li><a href="{{route('news')}}">News</a></li> 
 										<li><a href="{{route('singleNews')}}">Ajuda e Dicas</a></li>
 										<li><a href="{{route('singleNews')}}">Dicas de Segurança</a></li>
 										<li><a href="{{route('singleNews')}}">Perguntas Frequentes</a></li>
 									</ul>
-								</li>
+								</li>-->
 								<li><a href="{{route('contact')}}">Contactos</a></li>
 								<li><a href="{{route('cart')}}">Compras</a>
 									<ul class="sub-menu">

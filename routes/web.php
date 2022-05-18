@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 		// ************************** Cart  ********************************
 
 	Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+	Route::get('/checkout/test', 'CheckoutController@store')->name('checkout.test');
 	Route::get('/cart/saved', 'CheckoutController@saveCart')->name('checkout.save');
 	Route::get('/cart/end', 'CheckoutController@awaitConfirm')->name('checkout.await');
 	Route::get('/checkout/aprovar', 'CheckoutController@aprovarList')->name('checkout.approve');
@@ -52,8 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// ************************** User  ********************************
 	Route::resource('user', 'UserController', ['except' => ['show','destroy']]);
-	Route::get('user/delete/{id}', 'UserController@destroy')->name('user.destroy')->middleware('can:isAdmin');
-	Route::get('user/bloquear/{id}', 'UserController@bloquear')->name('user.bloquear')->middleware('can:isAdmin');
+	Route::get('user/delete/{id}', 'UserController@destroy')->name('user.destroy')->middleware('can:forAdmins');
+	Route::get('user/bloquear/{id}', 'UserController@bloquear')->name('user.bloquear')->middleware('can:forAdmins');
 
 
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -76,10 +77,10 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	
 	// ************************** Product  ********************************
-	Route::get('produto/listar', 'ProductTypeController@index')->name('produto.index');
-	Route::get('produto/delete/{id}', 'ProductTypeController@destroy')->name('produto.destroy')->middleware('can:isAdmin');
-	Route::resource('produto', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
-	Route::get('produto/bloquear/{id}', 'ProductTypeController@bloquear')->name('produto.bloquear')->middleware('can:isAdmin');
+	Route::get('produto/listar', 'ProductTypeController@index')->name('produto.index')->middleware('can:relatorio_venda');
+	Route::get('produto/delete/{id}', 'ProductTypeController@destroy')->name('produto.destroy')->middleware('can:venda');
+	Route::resource('produto', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:venda');
+	Route::get('produto/bloquear/{id}', 'ProductTypeController@bloquear')->name('produto.bloquear')->middleware('can:venda');
 
 		// ************************** ProductUser ********************************
 
@@ -87,25 +88,25 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('produto/user/create', 'ProductController@userProduct')->name('produto.user.store')->middleware('can:isCliente');
 
 	// ************************** Product Type ********************************
-	Route::get('produtoType/listar', 'ProductTypeController@index')->name('produtoType.index')->middleware('can:isAdmin');
-	Route::get('produtoType/delete/{id}', 'ProductTypeController@destroy')->name('produtoType.destroy')->middleware('can:isAdmin');
-	Route::resource('produtoType', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:isAdmin');
+	Route::get('produtoType/listar', 'ProductTypeController@index')->name('produtoType.index')->middleware('can:relatorio_venda');
+	Route::get('produtoType/delete/{id}', 'ProductTypeController@destroy')->name('produtoType.destroy')->middleware('can:venda');
+	Route::resource('produtoType', 'ProductTypeController', ['except' => ['show','index','destroy']])->middleware('can:venda');
 
 	
 	
 	// ************************** Funcionario  ********************************
-	Route::get('funcionario/listar', 'FuncionarioController@index')->name('funcionario.index')->middleware('can:isAdmin');
-	Route::resource('funcionario', 'FuncionarioController', ['except' => ['show','index']])->middleware('can:isAdmin');
+	Route::get('funcionario/listar', 'FuncionarioController@index')->name('funcionario.index')->middleware('can:forAdmins');
+	Route::resource('funcionario', 'FuncionarioController', ['except' => ['show','index']])->middleware('can:forAdmins');
 	
 	// ************************** Cliente  ********************************
-	Route::get('cliente/listar', 'ClienteController@index')->name('cliente.index')->middleware('can:isAdmin');
-	Route::resource('cliente', 'ClienteController', ['except' => ['show','index']])->middleware('can:isAdmin');
+	Route::get('cliente/listar', 'ClienteController@index')->name('cliente.index')->middleware('can:listar_user');
+	Route::resource('cliente', 'ClienteController', ['except' => ['show','index']])->middleware('can:ForAdmins');
 
 	// ************************** PDF *****************************
-	 Route::get('relatorio/venda', 'RelatorioController@index')->name('relatorio.venda');
-	// Route::get('relatorio/pdf', 'RelatorioController@exibirPDF')->name('relatorio.pdf');
-	// Route::get('relatorio/listar', 'RelatorioController@index')->name('relatorio.index');
-	// Route::get('relatorio/gerar', 'RelatorioController@gerar')->name('relatorio.gerar');
+	 Route::get('relatorio/venda', 'RelatorioController@index')->name('relatorio.venda')->middleware('can:relatorio_venda');
+
+	 ///######################################################
+	 Route::resource('videos','MediaController'); 
 });
 
 // ********************* Carrinho ***************************
@@ -114,3 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('add-to-cart/{id}','CartController@addToCart')->name('add.to.cart');
 Route::patch('update-cart','CartController@updateCart')->name('update.cart');
 Route::delete('remove-from-cart','CartController@removeCart')->name('remove.from.cart');
+
+
+//********************     Test-endpoint    ******** */
+
+Route::get('teste/ler','Web\TesteController@getAll')->name('list.test');
+Route::get('teste/enviar','Web\TesteController@addGPS')->name('send.test');

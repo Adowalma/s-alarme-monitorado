@@ -7,7 +7,7 @@
 @section('content')
   <div class="panel-header">
     <div class="header text-center">
-
+    @include('alerts.personalizado.index')            
       <!-- <img src="{{ asset('assets/img/banner-header.jpg') }}" alt=""> -->
       <h2 class="title">Notificações</h2>
     </div>
@@ -64,10 +64,10 @@
                             </div> -->
                             <div class="">
                               <!-- <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','center')">Ver detalhes</button> -->
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-theVideo="http://www.youtube.com/embed/loFtozxZG0s">
+                              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-theVideo="http://www.youtube.com/embed/loFtozxZG0s">
                                 Ver detalhes
-                              </button>
-
+                              </button> -->
+                              <a href="{{ route('mapa.teste') }}" class="btn btn-primary">Ver detalhes</a>
                               @include('modals.alarms')
 
                             </div>

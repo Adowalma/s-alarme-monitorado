@@ -13,6 +13,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          @include('alerts.personalizado.index')            
             <h4 class="card-title">{{__("Clientes")}}</h4>
             <div class="col-12 mt-2">
                                         </div>

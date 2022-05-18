@@ -13,6 +13,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          @include('alerts.personalizado.index')
               <a class="btn btn-primary btn-round text-white pull-right" href="{{route('produto.create')}}" title="Adicionar Produtos">Adicionar</a>
             <h4 class="card-title">{{__("Tipos de Produtos")}}</h4>
             <div class="col-12 mt-2">

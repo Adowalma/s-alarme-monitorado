@@ -14,7 +14,7 @@
         <div class="card">
           <div class="card-header">
             @include('alerts.personalizado.index')
-          @can('isAdmin') 
+          @can('venda') 
               <a class="btn btn-primary btn-round text-white pull-right" href="{{route('produto.create')}}" title="Adicionar Produtos">Adicionar</a>
             @endcan
               <h4 class="card-title">{{__("Produtos")}}</h4>
@@ -28,10 +28,10 @@
             <table id="datatable" class="table table-striped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>Image</th>
+                  <th>Imagem</th>
                   <th>Nome</th>
-                  <th>Descricao</th>
-                  <th>Preco</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
                   <th>Stock</th>
                   <!-- <th>Propietário</th> -->
                   <!-- <th>Estado</th> -->
@@ -86,3 +86,16 @@
     <!-- end row -->
   </div>
   @endsection
+
+@push('js')
+<script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                columnDefs: [{
+                    orderable: false,
+                    targets: -1
+                }] 
+            });
+        });
+</script>
+@endpush

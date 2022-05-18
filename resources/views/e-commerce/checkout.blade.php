@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-	
+
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -20,6 +20,8 @@
 	<!-- check out section -->
 	<div class="checkout-section mt-150 mb-150">
 		<div class="container">
+		@include('alerts.personalizado.index')
+
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="checkout-accordion-wrap">
@@ -36,11 +38,11 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="route{{('ecommerce.index')}}">
-						        		<p><input type="text" name='nome' placeholder="Nome Completo" value='{{$user->name}}'></p>
-						        		<p><input type="email" name='email' placeholder="Email" value='{{$user->email}}'></p>
-						        		<p><input type="text" name='endereco' placeholder="Endereço" value='{{$user->endereco}}'></p>
-						        		<p><input type="tel" name='tel' placeholder="Telemóvel" value='{{$user->telemovel}}'></p>
+						        	<form >
+						        		<p><input type="text" name='nome' placeholder="Nome Completo" value='{{$user->name}}' disabled></p>
+						        		<p><input type="email" name='email' placeholder="Email" value='{{$user->email}}' disabled></p>
+						        		<p><input type="text" name='endereco' placeholder="Endereço" value='{{$user->endereco}}' disabled></p>
+						        		<p><input type="tel" name='tel' placeholder="Telemóvel" value='{{$user->telemovel}}' disabled></p>
 						        	</form>
 						        </div>
 						      </div>
@@ -58,13 +60,10 @@
 						    <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="route{{('ecommerce.index')}}">
-												<p><input type="text" name='matricula' placeholder="Matrícula"></p>
-												<p><input type="text" name='marca' placeholder="Marca"></p>
-												<p><input type="text" name='modelo' placeholder="Modelo"></p>
-												<p><input type="text" name='motor' placeholder="Nº do Motor"></p>
-												<p><input type="text" name='quadro' placeholder="Nº do Quadro"></p>
-						        	</form>
+						        	<form methods='Post' action="{{route('checkout.save')}}">
+												<p><input type="text" name='matricula' placeholder="Matrícula" required></p>
+												<p><input type="text" name='marca' placeholder="Marca" required></p>
+												<p><input type="text" name='modelo' placeholder="Modelo" required></p>						        
 						        </div>
 						      </div>
 						    </div>
@@ -136,7 +135,8 @@
 								</tr>
 							</tbody>
 						</table>
-						<a href="{{route('checkout.save')}}" type="submit" class="boxed-btn">Concluir Pagamento</a>
+						<button type="submit">Concluir Pagamento</button>
+						</form>
 					</div>
 				</div>
 			</div>

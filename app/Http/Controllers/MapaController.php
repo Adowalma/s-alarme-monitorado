@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Posto;
+use App\Models\Livrete;
 
 class MapaController extends Controller
 {
@@ -19,6 +20,9 @@ class MapaController extends Controller
         }
     }
     public function testMapa(){
-        return view('mapsteste');
+        $carro=Livrete::where("id",'=',1)
+                ->get();
+    //    dd($carro);
+        return view('mapsteste', compact('carro'));
     }
 }

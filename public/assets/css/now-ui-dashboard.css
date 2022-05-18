@@ -4054,7 +4054,7 @@ Created using IcoMoon - icomoon.io
 /*Grey color customer ###############################################3 */
 .sidebar[data-color="grey"]:after,
 .off-canvas-sidebar[data-color="grey"]:after {
-    background: #777777;
+     background: #777777; 
 }
 
 .sidebar[data-color="grey"] .nav li.active>a:not([data-toggle="collapse"]),

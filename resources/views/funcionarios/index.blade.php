@@ -13,6 +13,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          @include('alerts.personalizado.index')            
               <a class="btn btn-primary btn-round text-white pull-right" href="{{route('funcionario.create')}}" title="Adicionar Funcionários">Adicionar</a>
             <h4 class="card-title">{{__("Funcionários")}}</h4>
             <div class="col-12 mt-2">

@@ -29,12 +29,12 @@ class ProductController extends Controller
    */
   public function index()
   {
-    if (Gate::allows('isAdmin')||Gate::allows('isFuncionario')) {
+    if (Gate::allows('venda')||Gate::allows('isFuncionario_venda')) {
       $proprietario= Product::leftJoin('users','products.user_id','=','users.id')
           ->join('product_types', 'products.type_id','=','product_types.id')
           ->select('products.*','users.name','product_types.descricao',"product_types.tipo")
          ->get();
-    }else
+    }else if(Gate::allows('isCliente'))
       $proprietario = Product::leftJoin('users','products.user_id','=','users.id')
       ->join('product_types', 'products.type_id','=','product_types.id')
       ->where('users.id','=',Auth::id())
