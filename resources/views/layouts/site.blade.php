@@ -63,34 +63,20 @@
 						<nav class="main-menu">
 							<ul>
 								<li><a href="{{route('ecommerce.index')}}">Home</a>
-									<!-- <ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul> -->
 								</li>
 								<li><a href="{{route('about')}}">Sobre</a></li>
-								<!-- <li><a href="{{route('news')}}">Ajuda e Informações</a>
-									<ul class="sub-menu">
-										<li><a href="{{route('news')}}">News</a></li> 
-										<li><a href="{{route('singleNews')}}">Ajuda e Dicas</a></li>
-										<li><a href="{{route('singleNews')}}">Dicas de Segurança</a></li>
-										<li><a href="{{route('singleNews')}}">Perguntas Frequentes</a></li>
-									</ul>
-								</li>-->
 								<li><a href="{{route('contact')}}">Contactos</a></li>
 								<li><a href="{{route('cart')}}">Compras</a>
 									<ul class="sub-menu">
-										<!-- <li><a href="{{route('shop')}}">Compras</a></li> -->
 										<li><a href="{{route('checkout')}}">Pagamento</a></li>
-										<!-- <li><a href="{{route('singleProduct')}}">Single Product</a></li> -->
 										<li><a href="{{route('cart')}}">Carrinho</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
+										<!-- <a class="shopping-cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
 											<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background-color:#F28123;">{{ count((array) session('cart')) }}</span>
-										</a>
+										</a> -->
 										<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
 										@if(Auth::check())
 										<a href="{{ route('dashboard') }}" class="nav-link">{{ __("Entrar") }}</a>

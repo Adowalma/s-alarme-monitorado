@@ -45,14 +45,14 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="contact-form-wrap">
-						<div class="contact-form-box">
+						<!-- <div class="contact-form-box">
 							<h4><i class="fas fa-map"></i> Endereço da loja</h4>
 							<p>bairro CTT KM-7 <br> Distrito do Rangel<br> Luanda</p>
 						</div>
 						<div class="contact-form-box">
 							<h4><i class="far fa-clock"></i> Horário Comercial</h4>
 							<p>Seg - Sexta: 8h às 21h <br> Sab - Domingo: 8h às 12h</p>
-						</div>
+						</div> -->
 						<div class="contact-form-box">
 							<h4><i class="fas fa-address-book"></i> Contactos</h4>
 							<p>Telemóvel: +244 999 999 999 <br> Email: sam.support@gmail.com</p>

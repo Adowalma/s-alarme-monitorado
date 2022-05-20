@@ -68,74 +68,13 @@
 						      </div>
 						    </div>
 						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingThree">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						          Detalhes de Pagamento
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="card-details">
-						        	<h6>Métodos de Pagamento</h6>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"checked>
-												<label class="form-check-label p" for="flexRadioDefault1">
-													Pagamento na Entrega
-												</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
-												<label class="form-check-label p" for="flexRadioDefault2">
-													Pagar por referência Multicaixa
-												</label>
-											</div>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 d-flex justify-content-end">
 					<div class="order-details-wrap">
-						<table class="order-details">
-							<thead>
-								<tr>
-									<th>Pedidos</th>
-									<th>Preços</th>
-								</tr>
-							</thead>
-							<tbody class="order-details-body">
-								<tr>
-									<td>Produtos</td>
-									<td>Total</td>
-								</tr>
-							@if(session('cart'))
-							@foreach(session('cart') as $id => $details)
-								<tr>
-									<td>{{ $details['name'] }}</td>
-									<td>{{ $details['price'] * $details['quantity'] }}kz</td>
-								</tr>
-							@endforeach
-							@endif
-								
-							</tbody>
-							<tbody class="checkout-details">
-							@php $total = 0 @endphp
-							@foreach((array) session('cart') as $id => $details)
-						
-									@php $total += $details['price'] * $details['quantity'] @endphp
-							@endforeach
-									<td>Total</td>
-									<td>{{ $total }}Kz</td>
-								</tr>
-							</tbody>
-						</table>
-						<button type="submit">Concluir Pagamento</button>
+						<button type="submit" class="boxed-btn">Concluir Solicitação</button>
 						</form>
 					</div>
 				</div>

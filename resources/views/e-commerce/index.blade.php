@@ -9,13 +9,13 @@
 					<div class="col-md-12 col-lg-10 offset-lg-1 offset-xl-0">
 						<div class="hero-text">
 							<div class="hero-text-tablecell">
-							<p class="subtitle">Sistema de Alarme Monitorado</p> -->
+							<p class="subtitle">Sistema de Alarme Monitorado</p>
 							<h1>Protegemos o que realmente importa</h1>
 							<!-- <h2 class="text-white">{{ __('Proteja o Seu Património') }}</h2> -->
               <h3 class="text-white">{{ __('O Sistema de alarme ideal pra você ') }}</h3>
 
 							<div class="hero-btns">
-								<a href="#Product" class="boxed-btn">Produtos</a>
+								<a href="#Product" class="boxed-btn">Serviços</a>
 								<a href="{{route('contact')}}" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
@@ -37,7 +37,7 @@
               <h3 class="text-white">{{ __('O Sistema de alarme ideal pra você ') }}</h3>
 
 							<div class="hero-btns">
-								<a href="#Product" class="boxed-btn">Produtos</a>
+								<a href="#Product" class="boxed-btn">Serviços</a>
 								<a href="{{route('contact')}}" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
@@ -59,7 +59,7 @@
               <h3 class="text-white">{{ __('O Sistema de alarme ideal pra você ') }}</h3>
 
 							<div class="hero-btns">
-								<a href="{{route('shop')}}" class="boxed-btn">Produtos</a>
+								<a href="{{route('shop')}}" class="boxed-btn">Serviços</a>
 								<a href="#Product" class="bordered-btn">Contacte-nos</a>
 							</div>
 							</div>
@@ -90,22 +90,22 @@
 				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
 					<div class="list-box d-flex align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-phone-volume"></i>
+							<i class="fas fa-laptop-code"></i>
 						</div>
 						<div class="content">
-							<h3>Suporte Técnico</h3>
-							<p>Clientes SAM podem ter atendimento telefônico 24 horas por dia.</p>
+							<h3>Controle pela Web</h3>
+							<p>Sua segurança em qualquer lugar. A SAM gerencia o seu alarme de qualquer lado dom mundo através do Sistema Web </p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="list-box d-flex justify-content-start align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-infinity"></i>
+							<i class="fas fa-stopwatch"></i>
 						</div>
 						<div class="content">
-							<h3>Garantia Vitalícia</h3>
-							<p>Os dispositivos da SAM possuem garantia vitalícia, assim como a atualização de software para novos serviços.</p>
+							<h3>Resposta em Pouco tempo</h3>
+							<p>A Central de monitoramento é capaz de verificar o acionamento do alarme e atuar em menos de 60 segundo, de acordo com a ocorrência</p>
 						</div>
 					</div>
 				</div>
@@ -121,8 +121,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3 ><span class="orange-text">Nossos</span> Produtos</h3>
-						<p> Os dispositivos da SAM possuem a mais avançada e inovadora tecnologia do mercado que permite proteção 24 horas e conectividade total com a nossa Central de Monitoramento de Alarmes SAM.</p>
+						<h3 ><span class="orange-text">Nossos</span> Serviços</h3>
+						<p> A SAM possui a mais avançada e inovadora tecnologia do mercado que permite proteção 24 horas e conectividade total com a nossa Central de Monitoramento de Alarmes SAM.</p>
 					</div>
 				</div>
 			</div>
@@ -140,7 +140,7 @@
 						<h3 class="text-center">{{ $product->tipo }}</h3>
 						<p class="product-price text-center"><!--span>Por unidade</span--> {{ $product->preco }} kz </p>
 						<div class="text-center">
-						<a href="{{route('add.to.cart', $product->id)}}" class="cart-btn text-center"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
+						<a href="{{url('/checkout')}}" class="cart-btn text-center"><i class="fas fa-shopping-cart"></i> Solicitar</a>
 						</div>
 					</div>
 				</div>
@@ -151,38 +151,6 @@
 	</div>
 	<!-- end product section -->
 
-
-	<!-- cart banner section -->
-	<section class="cart-banner pt-100 pb-100">
-    	<div class="container">
-        	<div class="row clearfix">
-            	<!--Image Column-->
-            	<div class="image-column col-lg-6">
-                	<div class="image">
-                    	<div class="price-box">
-                        	<div class="inner-price">
-                                <span class="price">
-                                    <strong>30%</strong> <br> de desconto
-                                </span>
-                            </div>
-                        </div>
-                    	<img src="assets/img/product_mockup/cam1.png" width="320px" alt="">
-                    </div>
-                </div>
-                <!--Content Column-->
-                <div class="content-column col-lg-6">
-					<h3><span class="orange-text">Deal</span> of the month</h3>
-                    <h4>Hikan Strwaberry</h4>
-                    <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
-                    <!--Countdown Timer-->
-                    <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="{{route('cart')}}" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a> 
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end cart banner section -->
 
 	<!-- testimonail-section -->
 	<div class="testimonail-section mt-100 mb-100">
@@ -248,7 +216,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="assets/img/sam.mp4" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						<a href="assets/img/sam.mp4" class="video-play-btn popup-youtube "><i class="fas fa-play"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
@@ -264,16 +232,6 @@
 		</div>
 	</div>
 	<!-- end advertisement section -->
-	
-	<!-- shop banner -->
-	<section class="shop-banner">
-    	<div class="container">
-        	<h3>Promoção de Abril! <br> Grande <span class="orange-text">Desconto...</span></h3>
-            <div class="sale-percent"><span>Oferta! <br> até</span>50% <span>de desconto</span></div>
-            <a href="{{route('shop')}}" class="cart-btn btn-lg">Compre Agora</a>
-        </div>
-    </section>
-	<!-- end shop banner -->
 
 	<!-- latest news -->
 	<div class="latest-news pt-150 pb-150">
