@@ -66,11 +66,8 @@
 								</li>
 								<li><a href="{{route('about')}}">Sobre</a></li>
 								<li><a href="{{route('contact')}}">Contactos</a></li>
-								<li><a href="{{route('cart')}}">Compras</a>
-									<ul class="sub-menu">
-										<li><a href="{{route('checkout')}}">Pagamento</a></li>
-										<li><a href="{{route('cart')}}">Carrinho</a></li>
-									</ul>
+								<li><a href="/checkout">Aderir ao serviço</a></li>
+										
 								</li>
 								<li>
 									<div class="header-icons">

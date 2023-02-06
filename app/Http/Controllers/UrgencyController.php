@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Urgency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 class UrgencyController extends Controller
 {
@@ -15,6 +17,15 @@ class UrgencyController extends Controller
     public function index()
     {
         //
+        if (Gate::allows('isAdmin')||Gate::allows('isFuncionario')) {
+            $dados= DB::table('urgencies')
+            ->where([['estado', 'Pendente']])
+            ->join('users','urgencies.user_id','=','users.id')
+            ->select('urgencies.*','users.name')
+         ->get();
+    
+        return view('pages.notifications',compact('dados'));
+        }
     }
 
     /**
@@ -44,7 +55,7 @@ class UrgencyController extends Controller
      * @param  \App\Models\Urgencia  $urgencia
      * @return \Illuminate\Http\Response
      */
-    public function show(Urgencia $urgencia)
+    public function show(Urgency $urgencia)
     {
         //
     }
@@ -52,10 +63,10 @@ class UrgencyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Urgencia  $urgencia
+     * @param  \App\Models\Urgency  $urgencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Urgencia $urgencia)
+    public function edit(Urgency $urgencia)
     {
         //
     }
@@ -64,10 +75,10 @@ class UrgencyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Urgencia  $urgencia
+     * @param  \App\Models\Urgency  $urgencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Urgencia $urgencia)
+    public function update(Request $request, Urgency $urgencia)
     {
         //
     }
@@ -75,10 +86,10 @@ class UrgencyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Urgencia  $urgencia
+     * @param  \App\Models\Urgency  $urgencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Urgencia $urgencia)
+    public function destroy(Urgency $urgencia)
     {
         //
     }

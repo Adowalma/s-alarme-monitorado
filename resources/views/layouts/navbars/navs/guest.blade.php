@@ -18,7 +18,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a href="{{ route('ecommerce.index') }}" class="nav-link">
-            <i class="now-ui-icons design_app"></i> {{ __("Loja") }}
+            <i class="now-ui-icons design_app"></i> {{ __("HOME") }}
           </a>
         </li>
         <li class="nav-item @if ($activePage == 'login') active @endif ">

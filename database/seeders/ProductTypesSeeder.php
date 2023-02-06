@@ -18,7 +18,6 @@ class ProductTypesSeeder extends Seeder
         DB::table('product_types')->insert([
             'tipo' => 'SAM GPS-CAM',
             'image' => '20220418024921.jpeg',
-            'preco' => '52.000',
             'quantidade' => 1,
             'descricao' => nl2br("Dimensões 118,6 x 83,9 mm (D x P) \n
             Peso

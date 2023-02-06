@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Cart;
-use App\Models\ProductType;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-
+use App\Models\ProductType;
 
 class ProductController extends Controller
 {
@@ -30,17 +27,16 @@ class ProductController extends Controller
   public function index()
   {
     if (Gate::allows('venda')||Gate::allows('isFuncionario_venda')) {
-      $proprietario= Product::leftJoin('users','products.user_id','=','users.id')
+      $proprietario= ProductType::leftJoin('users','products.user_id','=','users.id')
           ->join('product_types', 'products.type_id','=','product_types.id')
           ->select('products.*','users.name','product_types.descricao',"product_types.tipo")
          ->get();
     }else if(Gate::allows('isCliente'))
-      $proprietario = Product::leftJoin('users','products.user_id','=','users.id')
+      $proprietario = ProductType::leftJoin('users','products.user_id','=','users.id')
       ->join('product_types', 'products.type_id','=','product_types.id')
       ->where('users.id','=',Auth::id())
       ->select('products.*','users.name','product_types.descricao',"product_types.tipo")
      ->get();
-    //  dd($dono);
     return view('produtos.index', compact('proprietario'));
   }
 
@@ -71,7 +67,7 @@ class ProductController extends Controller
     );
 
     for($i=1;$i<=$request->quantidade;$i++)
-    Product::create([
+    ProductType::create([
       'type_id' => $request->type_id,
       'product_key' => rtrim(chunk_split(Str::random(16), 4, '-'), '-')
     ]);
@@ -81,17 +77,17 @@ class ProductController extends Controller
   public function destroy($id)
   {
       //
-      Product::find($id)->delete();
+      ProductType::find($id)->delete();
         return redirect()->route('produto.index')
         ->with('success','Produto deleted successfully');
   }
   public function bloquear( $id )
     {
-      Product::find($id )->update( ['estado'=>'Desativado'] );
+      ProductType::find($id )->update( ['estado'=>'Desativado'] );
            return redirect()->back();
     }
 
-    ######################### Product-User ############################
+    ######################### ProductType-User ############################
 
     public function userProductCreate(){
       return view('produtos.productUser.new');
@@ -104,18 +100,18 @@ class ProductController extends Controller
     ]
     );
         // verificando se o product key exist e posteriormente se tem proprietario
-        // dd(Product::where('user_id',null)->count());
-        $x= Product::where('product_key', $request['product_key'])
+        // dd(ProductType::where('user_id',null)->count());
+        $x= ProductType::where('product_key', $request['product_key'])
                     ->where('id','=', $request['id']);
 
         if($x->count('id')){
 
             if($x->where('user_id',"=",null)){
              $x->update(['user_id'=>Auth::id()]);
-             return redirect()->back()->with('success','Product adicionado com sucesso');
+             return redirect()->back()->with('success','ProductType adicionado com sucesso');
             }
             else{
-              return redirect()->back()->with('erro','Falha ao Adicionar. Este Product-key ja se encontra em utilizacao');
+              return redirect()->back()->with('erro','Falha ao Adicionar. Este ProductType-key ja se encontra em utilizacao');
             }
           }else{
             return redirect()->back()->with('alerta','Falha ao Adicionar. Verifica os dados inseridos');
@@ -126,7 +122,7 @@ class ProductController extends Controller
 
   public function addToCart($id)
     {
-        $product = Product::findOrFail($id);
+        $product = ProductType::findOrFail($id);
                   // ->join('product_types', 'products.type_id','=','product_types.id')
                   // ->select('products.*','product_types.*')->get();
           // dd($product->get());

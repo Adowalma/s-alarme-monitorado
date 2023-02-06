@@ -25,55 +25,24 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
 
-            
             'role'=>'admin'
         ]);
         DB::table('users')->insert([
-            'name' => 'Admin Venda',
-            'username' => 'Admin_venda',
-            'email' => 'admin@venda.com',
+            'name' => 'John Doe',
+            'username' => 'moleke',
+            'email' => 'moleke@gmail.com',
             'endereco' => 'Luanda, Rangel, CTT',
             'telemovel' => '999999999',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'created_at' => now(),
             'updated_at' => now(),
-
-            
-            'role'=>'admin_venda'
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Funcionario',
-            'username' => 'Funcionario',
-            'email' => 'funcionario@nowui.com',
-            'endereco' => 'Luanda, Rangel, CTT',
-            'telemovel' => '999999999',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-            'created_at' => now(),
-            'updated_at' => now(),
-
             
             'role'=>'funcionario'
         ]);
         DB::table('users')->insert([
-            'name' => 'Funcionario Venda',
-            'username' => 'Funcionario_venda',
-            'email' => 'funcionario@venda.com',
-            'endereco' => 'Luanda, Rangel, CTT',
-            'telemovel' => '999999999',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-            'created_at' => now(),
-            'updated_at' => now(),
-
-            
-            'role'=>'funcionario_venda'
-        ],
-    );
-        DB::table('users')->insert([
-            'name' => 'Cliente cliente',
-            'username' => 'Cliente',
+            'name' => 'Richard Roe',
+            'username' => 'amado',
             'email' => 'cliente@gmail.com',
             'endereco' => 'Luanda, Rangel, CTT',
             'telemovel' => '999999999',
@@ -81,10 +50,36 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
             'created_at' => now(),
             'updated_at' => now(),
-
             
             'role'=>'cliente'
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Jane Doe',
+            'username' => 'justina',
+            'email' => 'funcionario@nowui.com',
+            'endereco' => 'Luanda, Rangel, CTT',
+            'telemovel' => '999999999',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'created_at' => now(),
+            'updated_at' => now(),
+            
+            'role'=>'cliente'
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Lorem Lorem',
+            'username' => 'soma',
+            'email' => 'funcionario@gmail.com',
+            'endereco' => 'Luanda, Rangel, CTT',
+            'telemovel' => '999999999',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'created_at' => now(),
+            'updated_at' => now(),
+            
+            'role'=>'funcionario'
         ],
     );
+      
     }
 }

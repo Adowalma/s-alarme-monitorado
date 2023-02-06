@@ -8,8 +8,9 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
+					<h1>SAM</h1>
 						<p>Seguro e Confiável</p>
-						<h1>Check Out Produtos</h1>
+					
 					</div>
 				</div>
 			</div>
@@ -30,7 +31,7 @@
 						    <div class="card-header" id="headingOne">
 						      <h5 class="mb-0">
 						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Detalhes de Faturamento
+						          Dados do usuario
 						        </button>
 						      </h5>
 						    </div>
@@ -74,7 +75,7 @@
 
 				<div class="col-lg-4 d-flex justify-content-end">
 					<div class="order-details-wrap">
-						<button type="submit" class="boxed-btn">Concluir Solicitação</button>
+						<button type="submit" class="boxed-btn"><a href="/dashboard">Concluir Solicitação</a></button>
 						</form>
 					</div>
 				</div>

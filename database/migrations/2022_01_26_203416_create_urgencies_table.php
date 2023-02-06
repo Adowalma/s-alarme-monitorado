@@ -15,8 +15,12 @@ class CreateUrgenciesTable extends Migration
     {
         Schema::create('urgencies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao');
-            $table->enum('estado', ['Pendente','Em execucao','Resolvido', 'Descartado']);
+            $table->string('descricao')->nullable();
+            $table->enum('estado', ['Pendente','Em execucao','Encaminhado', 'Descartado'])->default('Pendente');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
             $table->softDeletes('deleted_at');
             $table->timestamps();
         });

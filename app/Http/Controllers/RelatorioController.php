@@ -15,21 +15,37 @@ class RelatorioController extends Controller
 {
     
   public function index(){
-    if (Gate::allows('venda')||Gate::allows('isFuncionario')) {
-      $products = Checkout::join('users',"checkout.cliente_id",'=',"users.id")
-                          ->join('product_types','checkout.product_id','=','product_types.id')
-                          ->select('users.name','users.endereco','checkout.*','product_types.image','product_types.tipo','product_types.preco')
+    if (Gate::allows('isAdmin')||Gate::allows('isFuncionario')) {
+      $products = Urgency::join('users',"urgencies.user_id",'=',"users.id")
+                          // ->join('product_types','checkout.product_id','=','product_types.id')
+                          ->select('users.*','urgencies.*')
                           ->get();
       }else
-      $products = Checkout::join('users',"checkout.cliente_id",'=',"users.id")
-        ->join('product_types','checkout.product_id','=','product_types.id')
-        ->select('users.name','users.endereco','checkout.*','product_types.image','product_types.tipo','product_types.preco')
+      $products = Urgency::join('users',"urgencies.user_id",'=',"users.id")
+        // ->join('product_types','checkout.product_id','=','product_types.id')
+        ->select('users.*','urgencies.*')
         ->where('users.id','=',Auth::id())
         ->get();
   
       
-      return view('relatorios.venda', compact('products'));
+      return view('relatorios.urgencia', compact('products'));
   }
+  // public function index(){
+  //   if (Gate::allows('venda')||Gate::allows('isFuncionario')) {
+  //     $products = Checkout::join('users',"checkout.cliente_id",'=',"users.id")
+  //                         ->join('product_types','checkout.product_id','=','product_types.id')
+  //                         ->select('users.name','users.endereco','checkout.*','product_types.image','product_types.tipo','product_types.preco')
+  //                         ->get();
+  //     }else
+  //     $products = Checkout::join('users',"checkout.cliente_id",'=',"users.id")
+  //       ->join('product_types','checkout.product_id','=','product_types.id')
+  //       ->select('users.name','users.endereco','checkout.*','product_types.image','product_types.tipo','product_types.preco')
+  //       ->where('users.id','=',Auth::id())
+  //       ->get();
+  
+      
+  //     return view('relatorios.venda', compact('products'));
+  // }
   
   //
     // public function index(){

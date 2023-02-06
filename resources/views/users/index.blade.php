@@ -50,7 +50,7 @@
                     <td>{{$user->role}}</td>
                     <td>{{$user->estado}}</td>
                     <!-- <td>25/02/2020 10:14</td> -->
-                    @if($user->role=="admin"||$user->role=="admin_venda")
+                    @if($user->role=="admin")
                       <td class="text-right">
                         See only
                       </td>
@@ -65,9 +65,9 @@
                                 <i class="fa fa-clone" aria-hidden="true"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           <a href="{{ url('') }}" class="dropdown-item" name="aluno">Ver Histórico</a>
+                           <!-- <a href="{{ url('') }}" class="dropdown-item" name="aluno">Ver Histórico</a>
                            
-                           <a href="{{ route('user.bloquear', $user->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Usuário</a>
+                           <a href="{{ route('user.bloquear', $user->id) }}" class="dropdown-item" class="dropdown-item" name="bloquearUser">Bloquear Usuário</a> -->
                                
 
                             <a href="{{route('user.destroy', $user->id)}}" class="dropdown-item"
@@ -93,13 +93,25 @@
 
   @push('js')
 <script>
-        $(document).ready(function() {
-            $('#datatable').DataTable({
-                columnDefs: [{
-                    orderable: false,
-                    targets: -1
-                }] 
-            });
-        });
+        $("#datatable").dataTable({
+                "bJQueryUI": true,
+                "oLanguage": {
+                    "sProcessing":   "Processando...",
+                    "sLengthMenu":   "Mostrar _MENU_ registros",
+                    "sZeroRecords":  "Não foram encontrados resultados",
+                    "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "Buscar:",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext":     "Seguinte",
+                        "sLast":     "Último"
+                    }
+                }
+            })          
 </script>
 @endpush
