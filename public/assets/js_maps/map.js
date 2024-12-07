@@ -8,9 +8,10 @@ var locations = [
     ['5ª Esquadra, tel:113', -8.8362255, 13.2318311, 1],
     ['Policia Nacional - Divisao de Viana, tel:123', -8.9044654, 13.3729221, 2],
     ['Esquadra do Belas, tel:144', 	-8.9299454, 13.26300293, 3],
-    ['13ª Esquadra, tel:155',  -8.8114573, 13.2836723, 4]
+    ['13ª Esquadra, tel:155',  -8.8114573, 13.2836723, 4],
+    ['Esquadra do Rangel, tel:123',  -8.818421511774684, 13.269351195380727, 5],
+    ['Esquadra do Móvel do Rangel, São Paulo, tel:123',  -8.81632230743385, 13.257141780218534, 6]
 ];
-
 function initialize() {
     var haightAshbury = new google.maps.LatLng(-8.8188885,13.2648876);
     var mapOptions = {
@@ -64,7 +65,7 @@ function addMarker(location) {
     //markers.push(marker); 
 
     /// marker circle around the map(on alert marker)
-    var radius = 1000
+    var radius = 200
     var position = marker.getPosition();
 
     var circle = new google.maps.Circle({
@@ -78,6 +79,24 @@ function addMarker(location) {
       strokeWeight: 2
     });
 }
+// var locations = [
+    // @foreach ($information as $location)
+    //     [ {{ $location->latitude }}, {{ $location->longitude }} ],
+    // @endforeach
+    // ];
+
+
+//     var map = new google.maps.Map(
+//           document.getElementById('map-canvas'), {zoom: 4, center: uluru});
+
+//     for (i = 0; i < locations.length; i++) {
+//             var location = new google.maps.LatLng(locations[i][0], locations[i][1]);
+
+//             var marker = new google.maps.Marker({
+//                 position: location,
+//                 map: map,
+//             }); 
+//   };
 
 function find_closest_marker(event) {
     var distances = [];

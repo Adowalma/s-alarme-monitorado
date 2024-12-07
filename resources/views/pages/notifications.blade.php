@@ -21,7 +21,7 @@
               <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
                   <h4 class="card-title">
-                   Gestão de Alarmes
+                   <!-- Gestão de Alarmes -->
                     <p class="category">Clique para ver os alarmes</p>
                   </h4>
                 </div>
@@ -34,29 +34,25 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                        Tipo de Alarme
-                      </th>
-                      <th>
                         Proprietário
                       </th>
-                      <th>
+                      <!-- <th>
                         Data - Hora
-                      </th>
+                      </th> -->
                       <th >
                         Ações
                       </th>
                     </thead>
                     <tbody>
+                      @forelse($dados as $dado)
                       <tr>
+                        
                         <td>
-                          
+                       {{$dado->name}}
                         </td>
-                        <td>
-                        Dakota Rice 
-                        </td>
-                        <td>
+                        <!-- <td>
                           16 Mar 08:57
-                        </td>
+                        </td> -->
                         <td class="text-left">
                           <div class="row">
                             <!-- <div class="col-md-4">
@@ -68,7 +64,7 @@
                                 Ver detalhes
                               </button> -->
                               <a href="{{ route('mapa.teste') }}" class="btn btn-primary">Ver detalhes</a>
-                              @include('modals.alarms')
+                              
 
                             </div>
                             <!-- <div class="col-md-4">
@@ -77,6 +73,9 @@
                           </div>
                         </td>
                       </tr>
+                      @empty
+                      <h5 class='text-center text-danger'>Sem urgencias</h5>
+                      @endforelse
                     </tbody>
                   </table>
                 </div>

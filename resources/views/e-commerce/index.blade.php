@@ -90,22 +90,22 @@
 				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
 					<div class="list-box d-flex align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-phone-volume"></i>
+							<i class="fas fa-laptop-code"></i>
 						</div>
 						<div class="content">
-							<h3>Suporte Técnico</h3>
-							<p>Clientes SAM podem ter atendimento telefônico 24 horas por dia.</p>
+							<h3>Controle pela Web</h3>
+							<p>Sua segurança em qualquer lugar. A SAM gerencia o seu alarme de qualquer lado dom mundo através do Sistema
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="list-box d-flex justify-content-start align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-infinity"></i>
+							<i class="fas fa-stopwatch"></i>
 						</div>
 						<div class="content">
-							<h3>Garantia Vitalícia</h3>
-							<p>Os dispositivos da SAM possuem garantia vitalícia, assim como a atualização de software para novos serviços.</p>
+							<h3>Resposta em Pouco tempo</h3>
+							<p>A Central de monitoramento é capaz de verificar o acionamento do alarme e atuar em menos de 60 segundo, de acordo com a ocorrência</p>
 						</div>
 					</div>
 				</div>

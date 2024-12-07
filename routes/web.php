@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +25,8 @@ Route::get('/', 'SitePagesController@index')->name('home');
 Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-Auth::routes();
-
 // ************************E-commerce Pages***************************
-Route::get('/e-commerce', 'SitePagesController@index')->name('ecommerce.index');
+Route::get('/home', 'SitePagesController@index')->name('ecommerce.index');
 Route::get('/cart', 'SitePagesController@cart')->name('cart');
 Route::get('/about', 'SitePagesController@about')->name('about');
 Route::get('/contact', 'SitePagesController@contact')->name('contact');
@@ -103,10 +101,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('cliente', 'ClienteController', ['except' => ['show','index']])->middleware('can:ForAdmins');
 
 	// ************************** PDF *****************************
-	 Route::get('relatorio/venda', 'RelatorioController@index')->name('relatorio.venda')->middleware('can:relatorio_venda');
+	Route::get('relatorio/venda', 'RelatorioController@indexVenda')->name('relatorio.venda')->middleware('can:relatorio_venda');
+	 Route::get('relatorio/urgencia', 'RelatorioController@index')->name('relatorio.urgencia')->middleware('can:relatorio_monitoramento');
 
 	 ///######################################################
 	 Route::resource('videos','MediaController'); 
+
+	 Route::get('/new/notfication','UrgencyController@index')->name('notification.new'); 
 });
 
 // ********************* Carrinho ***************************

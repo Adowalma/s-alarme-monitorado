@@ -14,10 +14,11 @@
       <script>
         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
       </script>, {{__(" Coded by")}}
-      <a href="https://github.com/Adowalma" target="_blank">{{__(" Adowalma Adão ")}}</a>&
-      <a href="https://www.facebook.com/welma.soma" target="_blank">{{__(" Graciete Soma")}}</a>
+      <a href="https://adowalma-adao.vercel.app" target="_blank">{{__(" Adowalma Adão ")}}</a>
+      <!-- &
+      <a href="https://www.facebook.com/welma.soma" target="_blank">{{__(" Graciete Soma")}}</a> -->
       {{__(" .  Designed by")}}
-      <a href="https://www.invisionapp.com" target="_blank">{{__(" Ariclene José")}}</a>
+      <a href="#" target="_blank">{{__(" Ariclene José")}}</a>
     </div>
   </div>
 </footer>

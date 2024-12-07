@@ -4,6 +4,14 @@
     'activePage' => 'relatorio',
   ])
 
+  @push('css')
+  <style>
+    .dt-buttons {
+    display: none;
+    }
+  </style>
+  @endpush
+
 @section('content')
 <div class="panel-header panel-header-sm">
   </div>
@@ -12,31 +20,64 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-              <!-- <a class="btn btn-primary btn-round text-white pull-right" href="#">Add user</a> -->
-            <h4 class="card-title">{{__("Relatório de Urgências")}}</h4>
-            <div class="col-12 mt-2">
-                                        </div>
+						<div class="dropdown  pull-right">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+						<i class="now-ui-icons loader_gear"></i>Acções
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Export CSV</a>
+                <a class="dropdown-item" href="#">Export Excel</a>
+                <a class="dropdown-item" href="#">Export PDF</a>
+                <a class="dropdown-item" href="#">Print</a>
+            </div>
           </div>
+					<h2 class="card-title"> {{__("Relatório de Urgências")}}</h2>
+
+          
+        </div>
           <div class="card-body">
             <div class="toolbar">
-              <!--        Here you can write extra buttons/actions for the toolbar              -->
+                 <!-- Here you can write extra buttons/actions for the toolbark            -->
             </div>
-            <table id="datatable" class="table table-striped data-table" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Nível de Acesso</th>
-                  <th>Estado</th>
-                  <!-- <th>Date de Criação</th> -->
-                  <th class="disabled-sorting text-right">Acções</th>
-                </tr>
-              </thead>
-              <tfoot>
-              <tbody>
-              </tbody>
-            </table>
+            <table class="table table-striped text-center" id="quiztable">
+                        <thead >
+                            <th style="width:5%">N.º</th>
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Endereço
+                            </th>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                           
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $row)
+                                <tr>
+                                    <td>
+                                        {{ $loop->index + 1 }}
+                                    </td>
+                                    <td>
+                                        {{ $row->name}}
+                                    </td>
+                                    <td>
+                                        {{ $row->endereco }}
+                                    </td>                                    
+                                    <td>{{$row->created_at}}</td>
+                                    <td>
+                                        <span class="badge badge-{{ ($row->estado =='Encaminhado') ? 'success' : (($row->estado == 'Descartado') ? 'info' : 'warning')}}">{{ $row->estado }}</span>
+                                        
+                                    </td>
+                                   
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
           </div>
           <!-- end content-->
         </div>
@@ -48,25 +89,80 @@
   </div>
   @endsection
 
-  @push('js')
-    <script >
-    $(function () {
-      
-      var table = $('.data-table').DataTable({
-          processing: true,
-          serverSide: true,
-          ajax: "{{ route('user.index') }}",
-          columns: [
-              // {data: 'id', name: 'id'},
-              {data: 'username', name: 'username'},
-              {data: 'name', name: 'name'},
-              {data: 'email', name: 'email'},
-              {data: 'role', name: 'role'},
-              {data: 'estado', name: 'estado'},
-              {data: 'action', name: 'action', orderable: false, searchable: false},
-          ]
+@push('js')
+  <script>
+    $(document).ready(function() {
+        $('#quiztable').DataTable({
+            dom: "Blfrtip",
+            buttons: [
+                {
+                    text: 'csv',
+                    extend: 'csvHtml5',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export-col)'
+                    }
+                },
+                {
+                    text: 'excel',
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export-col)'
+                    }
+                },
+                {
+                    text: 'pdf',
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export-col)'
+                    }
+                },
+                {
+                    text: 'print',
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export-col)'
+                    }
+                },
+                
+            ],
+            columnDefs: [{
+                orderable: false,
+                targets: -1
+            }], 
+
+            "bJQueryUI": true,
+                "oLanguage": {
+                    "sProcessing":   "Processando...",
+                    "sLengthMenu":   "Mostrar _MENU_ registros",
+                    "sZeroRecords":  "Não foram encontrados resultados",
+                    "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "Buscar:",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext":     "Seguinte",
+                        "sLast":     "Último"
+                    }
+                }
+
+        });
+        $("div a").click(function() {
+          var i = $(this).index() + 1
+          var table = $('#quiztable').DataTable();
+          if (i == 1) {
+              table.button('.buttons-csv').trigger();
+          } else if (i == 2) {
+              table.button('.buttons-excel').trigger();
+          } else if (i == 3) {
+              table.button('.buttons-pdf').trigger();
+          } else if (i == 4) {
+              table.button('.buttons-print').trigger();
+          } 
       });
-      
     });
   </script>
-  @endpush
+@endpush
