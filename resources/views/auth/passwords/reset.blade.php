@@ -8,14 +8,14 @@
 @section('content')
   <div class="content">
     <div class="container">
-      <div class="col-md-4 ml-auto mr-auto">
+      <div class="col-md-4 ml-auto mr-auto" style="backdrop-filter: blur(10px);">
         <form role="form" method="POST" action="{{ route('password.update') }}">
           @csrf
           <input type="hidden" name="token" value="{{ $token }}">
           <div class="card card-login card-plain">
             <div class="card-header ">
               <div class="logo-container">
-                <img src="{{ asset('assets/img/eye-logo.png') }}" alt="">
+                <img src="{{ asset('assets/img/Sam/3x/Ativo 2.svg') }}" alt="">
               </div>
             </div>
             <div class="card-body ">
